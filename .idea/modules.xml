@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Ají.iml" filepath="$PROJECT_DIR$/Ají.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appetizers/appetizers.iml" filepath="$PROJECT_DIR$/appetizers/appetizers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entrees/entrees.iml" filepath="$PROJECT_DIR$/entrees/entrees.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guidedpreparation/guidedpreparation.iml" filepath="$PROJECT_DIR$/guidedpreparation/guidedpreparation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mealdetails/mealdetails.iml" filepath="$PROJECT_DIR$/mealdetails/mealdetails.iml" />
+    </modules>
+  </component>
+</project>
