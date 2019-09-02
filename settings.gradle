@@ -1,2 +1,2 @@
-include ':app', ':appetizers', ':entrees', ':mealdetails', ':guidedpreparation'
+include ':app', ':mealdetails', ':guidedpreparation'
 rootProject.name='Ají'
