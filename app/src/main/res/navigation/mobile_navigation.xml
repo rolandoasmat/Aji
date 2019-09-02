@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/navigation_appetizers"
-        android:name="com.rolandoasmat.aji.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:name="com.rolandoasmat.aji.ui.appetizers.AppetizersFragment"
+        android:label="@string/title_appetizers"
         tools:layout="@layout/fragment_appetizers" />
 
     <fragment
