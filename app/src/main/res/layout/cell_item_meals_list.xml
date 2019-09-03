@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="300dp" >
 
     <ImageView
         android:id="@+id/mealBackdrop"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:background="@color/colorPrimaryDark"/>
+        tools:background="@color/primaryDarkColor"/>
 
     <TextView
         android:id="@+id/mealTitle"
@@ -24,6 +24,7 @@
         android:padding="8dp"
         android:background="@color/translucentGray"
         android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
