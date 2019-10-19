@@ -1,2 +1,2 @@
-include ':app', ':mealdetails', ':guidedpreparation'
+include ':app', ':mealdetails', ':guidedpreparation', ':ajinetworksdk'
 rootProject.name='Ají'
