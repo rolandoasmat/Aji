@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
  * Custom view that encapsulates a list
  * of meals
  */
-class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
+class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs), MealListItemCallbacks {
 
-    private val mealsAdapter: MealsListAdapter = MealsListAdapter()
+
+    private val mealsAdapter: MealsListAdapter = MealsListAdapter(this)
 
     init {
         layoutManager = LinearLayoutManager(context)
@@ -23,6 +24,13 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
      */
     fun setData(data: MealsListUiModel) {
         mealsAdapter.setData(data.meals)
+
+    }
+
+    // Callbacks
+
+    override fun onImageTapped(index: Int) {
+        // TODO navigate to meal details destination
 
     }
 }

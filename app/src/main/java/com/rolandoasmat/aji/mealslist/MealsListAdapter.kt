@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.cell_item_meals_list.view.*
  */
 private typealias MealsList = List<MealsListItemUiModel>
 
-class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
+class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
 
     private var data: MealsList? = null
 
@@ -37,6 +37,7 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         data?.getOrNull(position)?.let {
             holder.bind(it)
+            holder.setCallbacks(position, callbacks)
         }
     }
 
@@ -50,6 +51,12 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
                 ImageLoader.load(data.backdropURL, it)
             }
             mealTitle?.text = data.mealTitle
+        }
+
+        fun setCallbacks(position: Int, callbacks: MealListItemCallbacks ) {
+            mealBackdrop?.setOnClickListener {
+                callbacks.onImageTapped(position)
+            }
         }
     }
 
