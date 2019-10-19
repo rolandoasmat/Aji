@@ -9,12 +9,22 @@
         android:id="@+id/navigation_appetizers"
         android:name="com.rolandoasmat.aji.ui.appetizers.AppetizersFragment"
         android:label="@string/title_appetizers"
-        tools:layout="@layout/fragment_appetizers" />
+        tools:layout="@layout/fragment_appetizers" >
+        <action
+            android:id="@+id/action_navigation_appetizers_to_meal_details_navigation"
+            app:destination="@id/meal_details_navigation" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_entrees"
         android:name="com.rolandoasmat.aji.ui.entrees.EntreesFragment"
         android:label="@string/title_entrees"
-        tools:layout="@layout/fragment_entrees" />
+        tools:layout="@layout/fragment_entrees" >
+        <action
+            android:id="@+id/action_navigation_entrees_to_meal_details_navigation"
+            app:destination="@id/meal_details_navigation" />
+    </fragment>
+
+    <include app:graph="@navigation/meal_details_navigation" />
 
 </navigation>

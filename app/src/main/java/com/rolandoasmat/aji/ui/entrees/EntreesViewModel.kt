@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rolandoasmat.aji.mealslist.MealsListItemUiModel
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
+import com.rolandoasmat.ajinetworksdk.AjiNetworkAPI
 
 class EntreesViewModel : ViewModel() {
 
