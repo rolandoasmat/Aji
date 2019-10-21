@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/Ají.iml" filepath="$PROJECT_DIR$/Ají.iml" />
       <module fileurl="file://$PROJECT_DIR$/ajinetworksdk/ajinetworksdk.iml" filepath="$PROJECT_DIR$/ajinetworksdk/ajinetworksdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/guidedpreparation/guidedpreparation.iml" filepath="$PROJECT_DIR$/guidedpreparation/guidedpreparation.iml" />
       <module fileurl="file://$PROJECT_DIR$/mealdetails/mealdetails.iml" filepath="$PROJECT_DIR$/mealdetails/mealdetails.iml" />
     </modules>
   </component>

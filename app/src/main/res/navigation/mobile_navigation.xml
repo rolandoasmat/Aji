@@ -5,6 +5,8 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_appetizers">
 
+    <include app:graph="@navigation/meal_details_navigation" />
+
     <fragment
         android:id="@+id/navigation_appetizers"
         android:name="com.rolandoasmat.aji.ui.appetizers.AppetizersFragment"
@@ -21,10 +23,8 @@
         android:label="@string/title_entrees"
         tools:layout="@layout/fragment_entrees" >
         <action
-            android:id="@+id/action_navigation_entrees_to_meal_details_navigation"
+            android:id="@+id/action_navigation_appetizers_to_meal_details_navigation"
             app:destination="@id/meal_details_navigation" />
     </fragment>
-
-    <include app:graph="@navigation/meal_details_navigation" />
 
 </navigation>
