@@ -1,4 +1,4 @@
-# Aji
+# Ají
 Android app to cook Peruvian meals!
 
 ## About
@@ -7,9 +7,11 @@ Android app to cook Peruvian meals!
 
 - 100% Kotlin
 - Coroutines used for threading
-- MVI architecture
-- Instant app + dynamic features
-- Koin for dependency injection
+- MVVM architecture
+- Modularization
+- Dagger dependency injection
 
 ## Running Application
-- No steps, build and run!
+- Download Android Studio 4.0 or newer
+- Download dependencies
+- Build and run!
