@@ -27,7 +27,7 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.meals.observe(this, Observer {
+        viewModel.favoriteRecipes.observe(this, Observer {
             render(it)
         })
     }

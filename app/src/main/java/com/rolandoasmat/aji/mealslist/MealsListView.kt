@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rolandoasmat.aji.ui.entrees.FavoritesFragmentDirections
+import com.rolandoasmat.aji.favorites.FavoritesFragmentDirections
 
 /**
  * Custom view that encapsulates a list
