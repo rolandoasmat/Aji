@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_appetizers">
+    app:startDestination="@+id/navigation_home">
 
     <include app:graph="@navigation/meal_details_navigation" />
 
     <fragment
-        android:id="@+id/navigation_appetizers"
-        android:name="com.rolandoasmat.aji.ui.appetizers.AppetizersFragment"
-        android:label="@string/title_appetizers"
-        tools:layout="@layout/fragment_appetizers" >
+        android:id="@+id/navigation_home"
+        android:name="com.rolandoasmat.aji.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_appetizers_to_meal_details_navigation"
+            android:id="@+id/action_navigation_home_to_meal_details_navigation"
             app:destination="@id/meal_details_navigation" />
     </fragment>
 
@@ -23,7 +23,7 @@
         android:label="@string/title_entrees"
         tools:layout="@layout/fragment_entrees" >
         <action
-            android:id="@+id/action_navigation_appetizers_to_meal_details_navigation"
+            android:id="@+id/action_navigation_home_to_meal_details_navigation"
             app:destination="@id/meal_details_navigation" />
     </fragment>
 

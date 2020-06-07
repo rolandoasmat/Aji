@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.ui.appetizers
+package com.rolandoasmat.aji.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,21 +9,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
-import kotlinx.android.synthetic.main.fragment_appetizers.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class AppetizersFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private lateinit var viewModel: AppetizersViewModel
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AppetizersViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         observeViewModel()
         viewModel.fetch()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_appetizers, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     private fun observeViewModel() {
@@ -34,7 +34,7 @@ class AppetizersFragment : Fragment() {
 
     private fun render(mealsList: MealsListUiModel?) {
         mealsList?.let {
-            appetizersListView?.setData(it)
+            recipesListView?.setData(it)
         }
     }
 

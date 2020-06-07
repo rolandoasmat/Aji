@@ -8,7 +8,7 @@
         android:layout_height="match_parent">
 
         <com.rolandoasmat.aji.mealslist.MealsListView
-            android:id="@+id/appetizersListView"
+            android:id="@+id/recipesListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.core.widget.NestedScrollView>

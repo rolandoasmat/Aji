@@ -1,16 +1,16 @@
-package com.rolandoasmat.aji.ui.appetizers
+package com.rolandoasmat.aji.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rolandoasmat.aji.mealslist.MealsListItemUiModel
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
 
-class AppetizersViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     val meals = MutableLiveData<MealsListUiModel>()
 
     /**
-     * Fetch Appetizers
+     * Fetch recipes
      */
     fun fetch() {
         // TODO fetch from network

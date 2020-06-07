@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
-import kotlinx.android.synthetic.main.fragment_appetizers.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class EntreesFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class EntreesFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_appetizers, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     private fun observeViewModel() {
@@ -34,7 +34,7 @@ class EntreesFragment : Fragment() {
 
     private fun render(mealsList: MealsListUiModel?) {
         mealsList?.let {
-            appetizersListView?.setData(it)
+            recipesListView?.setData(it)
         }
     }
 
