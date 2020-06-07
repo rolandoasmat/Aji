@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.rolandoasmat.aji.ui.entrees.FavoritesFragment"
+        android:name="com.rolandoasmat.aji.favorites.FavoritesFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorites" >
         <action

@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.ui.entrees
+package com.rolandoasmat.aji.favorites
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

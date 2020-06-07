@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.ui.entrees
+package com.rolandoasmat.aji.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater

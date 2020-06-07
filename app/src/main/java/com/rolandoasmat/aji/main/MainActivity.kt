@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.ui.main
+package com.rolandoasmat.aji.main
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
