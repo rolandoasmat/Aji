@@ -11,13 +11,13 @@ import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class EntreesFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
-    private lateinit var viewModel: EntreesViewModel
+    private lateinit var viewModel: FavoritesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(EntreesViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(FavoritesViewModel::class.java)
         observeViewModel()
         viewModel.fetch()
     }

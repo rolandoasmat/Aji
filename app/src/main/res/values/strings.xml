@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Ají</string>
     <string name="title_home">Home</string>
-    <string name="title_entrees">Entrees</string>
+    <string name="title_favorites">Favorites</string>
 </resources>

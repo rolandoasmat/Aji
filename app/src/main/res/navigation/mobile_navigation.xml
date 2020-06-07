@@ -18,10 +18,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_entrees"
-        android:name="com.rolandoasmat.aji.ui.entrees.EntreesFragment"
-        android:label="@string/title_entrees"
-        tools:layout="@layout/fragment_entrees" >
+        android:id="@+id/navigation_favorites"
+        android:name="com.rolandoasmat.aji.ui.entrees.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites" >
         <action
             android:id="@+id/action_navigation_home_to_meal_details_navigation"
             app:destination="@id/meal_details_navigation" />
