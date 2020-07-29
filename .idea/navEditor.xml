@@ -42,13 +42,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="navigation_entrees">
+                  <entry key="navigation_favorites">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="29" />
-                            <option name="y" value="92" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                         <option name="myPositions">

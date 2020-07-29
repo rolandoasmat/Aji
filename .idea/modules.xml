@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ají.iml" filepath="$PROJECT_DIR$/Ají.iml" group="Ají" />
-      <module fileurl="file://$PROJECT_DIR$/ajinetworksdk/ajinetworksdk.iml" filepath="$PROJECT_DIR$/ajinetworksdk/ajinetworksdk.iml" group="Ají/ajinetworksdk" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Ají/app" />
-      <module fileurl="file://$PROJECT_DIR$/mealdetails/mealdetails.iml" filepath="$PROJECT_DIR$/mealdetails/mealdetails.iml" group="Ají/mealdetails" />
     </modules>
   </component>
 </project>

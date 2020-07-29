@@ -1,4 +1,4 @@
-package com.rolandoasmat.ajinetworksdk.model
+package com.rolandoasmat.aji.network.model
 
 data class Step(
     val title: String,
