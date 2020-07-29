@@ -8,7 +8,7 @@ Android app to cook Peruvian meals!
 - 100% Kotlin
 - Coroutines used for threading
 - MVVM architecture
-- Modularization
+- Navigation component
 - Dagger dependency injection
 
 ## Running Application
