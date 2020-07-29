@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.meals.observe(this, Observer {
+        viewModel.meals.observe(viewLifecycleOwner, Observer {
             render(it)
         })
     }

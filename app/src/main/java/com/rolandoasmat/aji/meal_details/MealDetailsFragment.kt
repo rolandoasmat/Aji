@@ -10,7 +10,7 @@ import com.rolandoasmat.aji.R
 class MealDetailsFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.meal_details_layout, container, false)
+        return inflater.inflate(R.layout.fragment_meal_details, container, false)
     }
 
 }
