@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rolandoasmat.aji.favorites.FavoritesFragmentDirections
 
 /**
  * Custom view that encapsulates a list
@@ -33,8 +32,8 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
 
     override fun onImageTapped(index: Int) {
         // TODO navigate to meal details destination
-        val action = FavoritesFragmentDirections.actionNavigationHomeToMealDetailsNavigation()
-        findNavController().navigate(action)
+//        val action = FavoritesFragmentDirections.actionNavigationHomeToMealDetailsNavigation()
+//        findNavController().navigate(action)
 
     }
 }

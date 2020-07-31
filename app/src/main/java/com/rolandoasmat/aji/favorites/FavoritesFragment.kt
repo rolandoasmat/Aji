@@ -18,16 +18,20 @@ class FavoritesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FavoritesViewModel::class.java)
-        observeViewModel()
-        viewModel.fetch()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+        viewModel.fetch()
+    }
+
     private fun observeViewModel() {
-        viewModel.favoriteRecipes.observe(this, Observer {
+        viewModel.favoriteRecipes.observe(viewLifecycleOwner, Observer {
             render(it)
         })
     }
