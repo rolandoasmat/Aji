@@ -1,4 +1,6 @@
-package com.rolandoasmat.aji.network.model
+package com.rolandoasmat.aji.model
+
+import com.rolandoasmat.aji.model.Ingredient
 
 data class ServingSize(
     val title: String,

@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.network.model
+package com.rolandoasmat.aji.model
 
 data class Ingredient(
     val id: String,

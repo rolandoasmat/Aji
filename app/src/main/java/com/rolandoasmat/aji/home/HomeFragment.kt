@@ -5,19 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
+import com.rolandoasmat.aji.ViewModelFactory
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import javax.inject.Inject
 
 class HomeFragment : Fragment() {
 
-    private lateinit var viewModel: HomeViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        (activity?.applicationContext as? AjiApplication)?.component()?.inject(this)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
