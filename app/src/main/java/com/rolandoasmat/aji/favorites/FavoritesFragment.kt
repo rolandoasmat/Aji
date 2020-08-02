@@ -32,14 +32,8 @@ class FavoritesFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.favoriteRecipes.observe(viewLifecycleOwner, Observer {
-            render(it)
+            // TODO render
         })
-    }
-
-    private fun render(mealsList: MealsListUiModel?) {
-        mealsList?.let {
-            recipesListView?.setData(it)
-        }
     }
 
 }

@@ -37,15 +37,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.meals.observe(viewLifecycleOwner, Observer {
-            render(it)
+        viewModel.breakfast.observe(viewLifecycleOwner, Observer {
+            it?.let { breakfastRecipesListView?.setData(it) }
+        })
+        viewModel.dinner.observe(viewLifecycleOwner, Observer {
+            it?.let { dinnerRecipesListView?.setData(it) }
+        })
+        viewModel.appetizers.observe(viewLifecycleOwner, Observer {
+            it?.let { appetizerRecipesListView?.setData(it) }
+        })
+        viewModel.desserts.observe(viewLifecycleOwner, Observer {
+            it?.let { dessertsRecipesListView?.setData(it) }
+        })
+        viewModel.drinks.observe(viewLifecycleOwner, Observer {
+            it?.let { drinksRecipesListView?.setData(it) }
         })
     }
 
-    private fun render(mealsList: MealsListUiModel?) {
-        mealsList?.let {
-            recipesListView?.setData(it)
-        }
-    }
 
 }

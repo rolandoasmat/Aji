@@ -2,7 +2,6 @@ package com.rolandoasmat.aji.mealslist
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -16,7 +15,7 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
     private val mealsAdapter: MealsListAdapter = MealsListAdapter(this)
 
     init {
-        layoutManager = LinearLayoutManager(context)
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter = mealsAdapter
     }
 

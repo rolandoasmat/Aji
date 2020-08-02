@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:padding="16dp">
+    android:layout_height="250dp">
 
     <ImageView
         android:id="@+id/mealBackdrop"

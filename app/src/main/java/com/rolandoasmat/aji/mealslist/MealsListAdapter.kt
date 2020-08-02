@@ -26,7 +26,7 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
-        val layoutID = R.layout.item_meal
+        val layoutID = R.layout.item_meal_narrow
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(layoutID, parent, false)
         return ViewHolder(view)
