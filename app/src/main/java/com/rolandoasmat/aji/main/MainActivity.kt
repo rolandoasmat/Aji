@@ -18,7 +18,7 @@ import com.rolandoasmat.aji.R
 //        // menu should be considered as top level destinations.
 //        val set: Set<Int> = setOf(
 //            R.id.recipes,
-//            R.id.navigation_favorites
+//            R.id.saved
 //        )
 //        val appBarConfiguration = AppBarConfiguration(set)
 //        setupActionBarWithNavController(navController, appBarConfiguration)
@@ -76,7 +76,7 @@ class MainActivity: AppCompatActivity() {
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
 
-        val navGraphIds = listOf(R.navigation.recipes, R.navigation.navigation_favorites)
+        val navGraphIds = listOf(R.navigation.recipes, R.navigation.saved)
 
         // Setup the bottom navigation view with a list of navigation graphs
         val controller = bottomNavigationView.setupWithNavController(

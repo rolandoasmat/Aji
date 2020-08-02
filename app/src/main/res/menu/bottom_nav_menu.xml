@@ -7,8 +7,8 @@
         android:title="@string/recipes" />
 
     <item
-        android:id="@+id/navigation_favorites"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_favorites" />
+        android:id="@+id/saved"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/saved" />
 
 </menu>
