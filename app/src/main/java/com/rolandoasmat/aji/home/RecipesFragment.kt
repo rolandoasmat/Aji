@@ -11,15 +11,15 @@ import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
 import com.rolandoasmat.aji.services.ImageLoader
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_recipes.*
 import kotlinx.android.synthetic.main.item_meal.*
 import javax.inject.Inject
 
-class HomeFragment : Fragment() {
+class RecipesFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
+    private val viewModel: RecipesViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_recipes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,6 +60,5 @@ class HomeFragment : Fragment() {
             it?.let { drinksRecipesListView?.setData(it) }
         })
     }
-
 
 }

@@ -8,7 +8,7 @@ import com.rolandoasmat.aji.mealslist.MealsListItemUiModel
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
 import com.rolandoasmat.aji.model.Plate
 
-class HomeViewModel(mealsRepository: MealsRepository) : ViewModel() {
+class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
 
     private val fetchMeals = MutableLiveData<Unit>()
 
