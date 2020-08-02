@@ -1,5 +1,6 @@
 package com.rolandoasmat.aji.model
 
 data class Plate(
-    val imageURL: String,
-    val title: String)
+    val title: String,
+    val backdropURL: String,
+    val thumbnailURL: String)

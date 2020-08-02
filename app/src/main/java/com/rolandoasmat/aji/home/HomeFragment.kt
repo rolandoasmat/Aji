@@ -10,8 +10,9 @@ import androidx.lifecycle.Observer
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
-import com.rolandoasmat.aji.mealslist.MealsListUiModel
+import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.item_meal.*
 import javax.inject.Inject
 
 class HomeFragment : Fragment() {
@@ -37,6 +38,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeViewModel() {
+        viewModel.featured.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                mealTitle.text = it.mealTitle
+                ImageLoader.load(it.backdropURL, mealBackdrop)
+            }
+        })
         viewModel.breakfast.observe(viewLifecycleOwner, Observer {
             it?.let { breakfastRecipesListView?.setData(it) }
         })
