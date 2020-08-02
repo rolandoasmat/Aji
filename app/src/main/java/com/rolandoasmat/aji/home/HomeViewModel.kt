@@ -165,7 +165,7 @@ class HomeViewModel(mealsRepository: MealsRepository) : ViewModel() {
     }
 
     private fun map(data: Plate): MealsListItemUiModel {
-        return MealsListItemUiModel(data.backdropURL, data.title)
+        return MealsListItemUiModel(data.thumbnailURL, data.title)
 
     }
 

@@ -8,7 +8,7 @@ class MockAjiNetworkAPI: AjiNetworkAPI {
         val lomoSaltado = Plate(
             "Lomo Saltado",
             "https://images-gmi-pmc.edge-generalmills.com/7bbcdd09-3380-4117-951b-1c8098ca984e.jpg",
-            "")
+            "https://images-gmi-pmc.edge-generalmills.com/7bbcdd09-3380-4117-951b-1c8098ca984e.jpg")
         return Response.success(lomoSaltado)
     }
 
@@ -24,7 +24,7 @@ class MockAjiNetworkAPI: AjiNetworkAPI {
         val empanada = Plate(
             "Empanada",
             "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-190807-empanadas-0105-landscape-pf-1566245422.jpg?crop=1.00xw:0.752xh;0,0.180xh&resize=1200:*",
-        "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-190807-empanadas-0105-landscape-pf-1566245422.jpg?crop=1.00xw:0.752xh;0,0.180xh&resize=1200:*")
+            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-190807-empanadas-0105-landscape-pf-1566245422.jpg?crop=1.00xw:0.752xh;0,0.180xh&resize=1200:*")
         val plates = listOf(chicharron, tamal, empanada)
         return Response.success(plates)
     }
