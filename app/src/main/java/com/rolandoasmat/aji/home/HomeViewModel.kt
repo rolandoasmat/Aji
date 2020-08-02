@@ -11,7 +11,7 @@ import com.rolandoasmat.aji.model.Plate
 class HomeViewModel(private val mealsRepository: MealsRepository) : ViewModel() {
 
     private val fetchMeals = MutableLiveData<Unit>()
-    private val _fetchMeals: LiveData<Resource<List<Plate>>> = Transformations.switchMap(mealsRepository.getMeals()) {
+    private val _fetchMeals: LiveData<Resource<List<Plate>>> = Transformations.switchMap(mealsRepository.getBreakfastPlates()) {
         MutableLiveData(it)
     }
 

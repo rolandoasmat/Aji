@@ -5,5 +5,15 @@ import retrofit2.Response
 
 interface AjiNetworkAPI {
 
-    fun fetchPlates(): Response<List<Plate>>
+    fun fetchFeaturedPlate(): Response<Plate>
+
+    fun fetchBreakfastPlates(): Response<List<Plate>>
+
+    fun fetchDinnerPlates(): Response<List<Plate>>
+
+    fun fetchAppetizerPlates(): Response<List<Plate>>
+
+    fun fetchDessertPlates(): Response<List<Plate>>
+
+    fun fetchDrinks(): Response<List<Plate>>
 }

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.services.ImageLoader
-import kotlinx.android.synthetic.main.cell_item_meals_list.view.*
+import kotlinx.android.synthetic.main.item_meal.view.*
 
 /**
  * Adapter for showing a list of meals
@@ -26,7 +26,7 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
-        val layoutID = R.layout.cell_item_meals_list
+        val layoutID = R.layout.item_meal
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(layoutID, parent, false)
         return ViewHolder(view)
