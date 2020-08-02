@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.home
+package com.rolandoasmat.aji.recipes
 
 import android.os.Bundle
 import android.view.LayoutInflater

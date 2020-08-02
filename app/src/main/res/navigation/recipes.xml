@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.rolandoasmat.aji.home.RecipesFragment"
+        android:name="com.rolandoasmat.aji.recipes.RecipesFragment"
         android:label="@string/recipes"
         tools:layout="@layout/fragment_recipes" >
     </fragment>

@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.home
+package com.rolandoasmat.aji.recipes
 
 import androidx.lifecycle.*
 import com.rolandoasmat.aji.MealsRepository

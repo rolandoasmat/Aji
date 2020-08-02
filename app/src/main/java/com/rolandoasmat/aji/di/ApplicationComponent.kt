@@ -1,6 +1,6 @@
 package com.rolandoasmat.aji.di
 
-import com.rolandoasmat.aji.home.RecipesFragment
+import com.rolandoasmat.aji.recipes.RecipesFragment
 import dagger.Component
 import javax.inject.Singleton
 
