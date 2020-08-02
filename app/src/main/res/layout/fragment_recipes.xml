@@ -15,7 +15,7 @@
 
             <TextView
                 android:text="Featured"
-                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="@color/primaryDarkColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
 
             <TextView
                 android:text="Breakfast"
-                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="@color/primaryDarkColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
 
             <TextView
                 android:text="Entrees"
-                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="@color/primaryDarkColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
 
             <TextView
                 android:text="Appetizers"
-                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="@color/primaryDarkColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
 
             <TextView
                 android:text="Dessert"
-                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="@color/primaryDarkColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
 
             <TextView
                 android:text="Drinks"
-                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="@color/primaryDarkColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
