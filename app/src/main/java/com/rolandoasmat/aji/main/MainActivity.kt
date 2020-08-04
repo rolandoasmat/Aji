@@ -89,6 +89,13 @@ class MainActivity: AppCompatActivity() {
         // Whenever the selected controller changes, setup the action bar.
         controller.observe(this, Observer { navController ->
             setupActionBarWithNavController(navController)
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                if (destination.label == "Recipes") {
+                    supportActionBar?.hide()
+                } else {
+                    supportActionBar?.show()
+                }
+            }
         })
         currentNavController = controller
     }
