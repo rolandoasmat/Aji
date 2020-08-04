@@ -24,6 +24,7 @@ class RecipesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity?.applicationContext as? AjiApplication)?.component()?.inject(this)
+        viewModel.fetch()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,13 +34,12 @@ class RecipesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
-        viewModel.fetch()
     }
 
     private fun observeViewModel() {
         viewModel.featured.observe(viewLifecycleOwner, Observer {
             it?.let {
-                mealTitle.text = it.mealTitle
+                mealTitle?.text = it.mealTitle
                 ImageLoader.load(it.backdropURL, mealBackdrop)
             }
         })
