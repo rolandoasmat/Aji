@@ -74,7 +74,7 @@ class MainActivity: AppCompatActivity() {
      * Called on first creation and when restoring state.
      */
     private fun setupBottomNavigationBar() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         val navGraphIds = listOf(R.navigation.recipes, R.navigation.saved)
 
