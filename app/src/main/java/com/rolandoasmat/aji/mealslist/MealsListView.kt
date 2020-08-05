@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs), MealListItemCallbacks {
 
-
+    private var callbacks: MealListItemCallbacks? = null
     private val mealsAdapter: MealsListAdapter = MealsListAdapter(this)
 
     init {
@@ -24,15 +24,15 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
      */
     fun setData(data: MealsListUiModel) {
         mealsAdapter.setData(data.meals)
+    }
 
+    fun setCallback(callbacks: MealListItemCallbacks) {
+        this.callbacks = callbacks
     }
 
     // Callbacks
 
     override fun onImageTapped(index: Int) {
-        // TODO navigate to meal details destination
-//        val action = FavoritesFragmentDirections.actionNavigationHomeToMealDetailsNavigation()
-//        findNavController().navigate(action)
-
+        callbacks?.onImageTapped(index)
     }
 }

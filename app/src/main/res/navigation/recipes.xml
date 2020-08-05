@@ -4,13 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recipes"
-    app:startDestination="@+id/fragment_home">
+    app:startDestination="@+id/fragment_recipes">
 
     <fragment
-        android:id="@+id/fragment_home"
+        android:id="@+id/fragment_recipes"
         android:name="com.rolandoasmat.aji.recipes.RecipesFragment"
         android:label="@string/recipes"
         tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipe_to_recipeDetails"
+            app:destination="@id/fragment_recipe_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_recipe_details"
+        android:name="com.rolandoasmat.aji.recipe_details.RecipeDetailsFragment"
+        android:label="@string/recipes_details"
+        tools:layout="@layout/fragment_recipe_details" >
+        <argument
+            android:name="recipeIDArg"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

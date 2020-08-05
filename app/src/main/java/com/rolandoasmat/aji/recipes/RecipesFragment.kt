@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
+import com.rolandoasmat.aji.mealslist.MealListItemCallbacks
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import kotlinx.android.synthetic.main.item_meal.*
 import javax.inject.Inject
 
-class RecipesFragment : Fragment() {
+class RecipesFragment : Fragment(), MealListItemCallbacks {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -34,6 +36,7 @@ class RecipesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        dinnerRecipesListView?.setCallback(this)
     }
 
     private fun observeViewModel() {
@@ -58,6 +61,11 @@ class RecipesFragment : Fragment() {
         viewModel.drinks.observe(viewLifecycleOwner, Observer {
             it?.let { drinksRecipesListView?.setData(it) }
         })
+    }
+
+    override fun onImageTapped(recipeID: Int) {
+        val action = RecipesFragmentDirections.actionRecipeToRecipeDetails(recipeID)
+        findNavController().navigate(action)
     }
 
 }
