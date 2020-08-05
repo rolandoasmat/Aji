@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
+import kotlinx.android.synthetic.main.fragment_recipe_details.*
 import javax.inject.Inject
 
 class RecipeDetailsFragment: Fragment() {
@@ -36,6 +37,12 @@ class RecipeDetailsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        setupViewPager()
+    }
+
+    private fun setupViewPager() {
+        val adapter = RecipeDetailsViewPagerAdapter(this)
+        viewPager?.adapter = adapter
     }
 
     private fun observeViewModel() {
