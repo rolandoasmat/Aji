@@ -15,14 +15,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- Main Activity -->
         <activity
             android:name=".main.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- This is added to handle a deep link -->
+            <nav-graph android:value="@navigation/recipes" />
         </activity>
     </application>
 

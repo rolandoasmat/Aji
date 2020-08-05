@@ -1,6 +1,7 @@
 package com.rolandoasmat.aji.network
 
 import com.rolandoasmat.aji.model.Plate
+import com.rolandoasmat.aji.model.RecipeDetails
 import retrofit2.Response
 
 class MockAjiNetworkAPI: AjiNetworkAPI {
@@ -54,7 +55,12 @@ class MockAjiNetworkAPI: AjiNetworkAPI {
             "Arroz Chaufa",
             "https://www.gourmet.cl/wp-content/uploads/2019/04/Arroz-chaufa-edit-2.jpg",
             "https://www.gourmet.cl/wp-content/uploads/2019/04/Arroz-chaufa-edit-2.jpg")
-        val plates = listOf(lomoSaltado, ajiDeGallina, tallarinesVerdes, arrozChaufa)
+        val arrozConPollo = Plate(
+            19,
+            "Arroz con Pollo",
+            "https://www.recetips.com/uploads/recetas_ce89af3170d309eea9addbf67a3bc639.jpg",
+            "https://www.recetips.com/uploads/recetas_ce89af3170d309eea9addbf67a3bc639.jpg")
+        val plates = listOf(lomoSaltado, ajiDeGallina, tallarinesVerdes, arrozChaufa, arrozConPollo)
         return Response.success(plates)
 
     }
@@ -122,6 +128,14 @@ class MockAjiNetworkAPI: AjiNetworkAPI {
             "https://smartsexypaleo.com/wp-content/uploads/2020/05/chicha-morada-purple-sweet-traditional-peruvian-corn-drink_101123-465.jpg")
         val plates = listOf(pisco, chicha)
         return Response.success(plates)
+    }
+
+    override fun fetchRecipeDetails(id: Int): Response<RecipeDetails> {
+        val id = 1234
+        val title = "Test Recipe"
+        val ingredients = listOf("1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple")
+        val steps = listOf("1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple")
+        return Response.success(RecipeDetails(id,  title, ingredients, steps))
     }
 
 }

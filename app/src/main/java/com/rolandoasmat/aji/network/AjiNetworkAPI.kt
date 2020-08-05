@@ -1,6 +1,7 @@
 package com.rolandoasmat.aji.network
 
 import com.rolandoasmat.aji.model.Plate
+import com.rolandoasmat.aji.model.RecipeDetails
 import retrofit2.Response
 
 interface AjiNetworkAPI {
@@ -16,4 +17,6 @@ interface AjiNetworkAPI {
     fun fetchDessertPlates(): Response<List<Plate>>
 
     fun fetchDrinks(): Response<List<Plate>>
+
+    fun fetchRecipeDetails(id: Int): Response<RecipeDetails>
 }
