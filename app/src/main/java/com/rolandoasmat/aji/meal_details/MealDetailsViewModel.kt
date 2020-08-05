@@ -1,15 +1,15 @@
 package com.rolandoasmat.aji.meal_details
 
 import androidx.lifecycle.*
-import com.rolandoasmat.aji.MealsRepository
+import com.rolandoasmat.aji.RecipesRepository
 import com.rolandoasmat.aji.Resource
 import com.rolandoasmat.aji.model.RecipeDetails
 
-class MealDetailsViewModel(mealsRepository: MealsRepository): ViewModel() {
+class MealDetailsViewModel(recipesRepository: RecipesRepository): ViewModel() {
 
     private val _fetchDetails = MutableLiveData<Int>()
     private val fetchDetails = Transformations.switchMap(_fetchDetails) {
-        mealsRepository.fetchRecipeDetails(it)
+        recipesRepository.fetchRecipeDetails(it)
     }
 
     private val _details = MediatorLiveData<MealDetailsUIModel>().apply {

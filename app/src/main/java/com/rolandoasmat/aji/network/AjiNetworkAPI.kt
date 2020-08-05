@@ -1,22 +1,22 @@
 package com.rolandoasmat.aji.network
 
-import com.rolandoasmat.aji.model.Plate
+import com.rolandoasmat.aji.model.Recipe
 import com.rolandoasmat.aji.model.RecipeDetails
 import retrofit2.Response
 
 interface AjiNetworkAPI {
 
-    fun fetchFeaturedPlate(): Response<Plate>
+    fun fetchFeaturedPlate(): Response<Recipe>
 
-    fun fetchBreakfastPlates(): Response<List<Plate>>
+    fun fetchBreakfastPlates(): Response<List<Recipe>>
 
-    fun fetchDinnerPlates(): Response<List<Plate>>
+    fun fetchDinnerPlates(): Response<List<Recipe>>
 
-    fun fetchAppetizerPlates(): Response<List<Plate>>
+    fun fetchAppetizerPlates(): Response<List<Recipe>>
 
-    fun fetchDessertPlates(): Response<List<Plate>>
+    fun fetchDessertPlates(): Response<List<Recipe>>
 
-    fun fetchDrinks(): Response<List<Plate>>
+    fun fetchDrinks(): Response<List<Recipe>>
 
     fun fetchRecipeDetails(id: Int): Response<RecipeDetails>
 }

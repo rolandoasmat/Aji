@@ -1,23 +1,23 @@
 package com.rolandoasmat.aji.recipes
 
 import androidx.lifecycle.*
-import com.rolandoasmat.aji.MealsRepository
+import com.rolandoasmat.aji.RecipesRepository
 import com.rolandoasmat.aji.Resource
 import com.rolandoasmat.aji.Status
 import com.rolandoasmat.aji.mealslist.MealsListItemUiModel
 import com.rolandoasmat.aji.mealslist.MealsListUiModel
-import com.rolandoasmat.aji.model.Plate
+import com.rolandoasmat.aji.model.Recipe
 
-class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
+class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
     private val fetchMeals = MutableLiveData<Unit>()
 
     // Featured
-    private val _featuredPlate: LiveData<Resource<Plate>> = Transformations.switchMap(mealsRepository.fetchFeaturedPlate()) {
+    private val _featuredRecipe: LiveData<Resource<Recipe>> = Transformations.switchMap(recipesRepository.fetchFeaturedPlate()) {
         MutableLiveData(it)
     }
     private val _featured = MediatorLiveData<MealsListItemUiModel>().apply {
-        addSource(_featuredPlate) {
+        addSource(_featuredRecipe) {
             handleFeaturedMealResponse(it)
         }
     }
@@ -26,7 +26,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
 
 
     // Breakfast
-    private val _breakfastPlates: LiveData<Resource<List<Plate>>> = Transformations.switchMap(mealsRepository.getBreakfastPlates()) {
+    private val _breakfastPlates: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(recipesRepository.getBreakfastPlates()) {
         MutableLiveData(it)
     }
     private val _breakfast = MediatorLiveData<MealsListUiModel>().apply {
@@ -38,7 +38,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
         get() = _breakfast
 
     // Dinner
-    private val _dinnerPlates: LiveData<Resource<List<Plate>>> = Transformations.switchMap(mealsRepository.fetchDinnerPlates()) {
+    private val _dinnerPlates: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(recipesRepository.fetchDinnerPlates()) {
         MutableLiveData(it)
     }
     private val _dinner = MediatorLiveData<MealsListUiModel>().apply {
@@ -51,7 +51,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
 
 
     // Appetizers
-    private val _appetizersPlates: LiveData<Resource<List<Plate>>> = Transformations.switchMap(mealsRepository.fetchAppetizerPlates()) {
+    private val _appetizersPlates: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(recipesRepository.fetchAppetizerPlates()) {
         MutableLiveData(it)
     }
     private val _appetizers = MediatorLiveData<MealsListUiModel>().apply {
@@ -64,7 +64,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
 
 
     // Desserts
-    private val _dessertPlates: LiveData<Resource<List<Plate>>> = Transformations.switchMap(mealsRepository.fetchDessertPlates()) {
+    private val _dessertPlates: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(recipesRepository.fetchDessertPlates()) {
         MutableLiveData(it)
     }
     private val _desserts = MediatorLiveData<MealsListUiModel>().apply {
@@ -77,7 +77,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
 
 
     // Drinks
-    private val _drinksPlates: LiveData<Resource<List<Plate>>> = Transformations.switchMap(mealsRepository.fetchDrinks()) {
+    private val _drinksPlates: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(recipesRepository.fetchDrinks()) {
         MutableLiveData(it)
     }
     private val _drinks = MediatorLiveData<MealsListUiModel>().apply {
@@ -99,7 +99,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
 
     //region Private
 
-    private fun handleFeaturedMealResponse(response: Resource<Plate>) {
+    private fun handleFeaturedMealResponse(response: Resource<Recipe>) {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
@@ -109,7 +109,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
         }
     }
 
-    private fun handleBreakfastMealsResponse(response: Resource<List<Plate>>) {
+    private fun handleBreakfastMealsResponse(response: Resource<List<Recipe>>) {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
@@ -119,7 +119,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
         }
     }
 
-    private fun handleDinnerMealsResponse(response: Resource<List<Plate>>) {
+    private fun handleDinnerMealsResponse(response: Resource<List<Recipe>>) {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
@@ -129,7 +129,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
         }
     }
 
-    private fun handleAppetizersMealsResponse(response: Resource<List<Plate>>) {
+    private fun handleAppetizersMealsResponse(response: Resource<List<Recipe>>) {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
@@ -139,7 +139,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
         }
     }
 
-    private fun handleDessertMealsResponse(response: Resource<List<Plate>>) {
+    private fun handleDessertMealsResponse(response: Resource<List<Recipe>>) {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
@@ -149,7 +149,7 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
         }
     }
 
-    private fun handleDrinkMealsResponse(response: Resource<List<Plate>>) {
+    private fun handleDrinkMealsResponse(response: Resource<List<Recipe>>) {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
@@ -159,12 +159,12 @@ class RecipesViewModel(mealsRepository: MealsRepository) : ViewModel() {
         }
     }
 
-    private fun map(data: List<Plate>): MealsListUiModel {
+    private fun map(data: List<Recipe>): MealsListUiModel {
         val mapped = data.map { map(it) }
         return MealsListUiModel(mapped)
     }
 
-    private fun map(data: Plate): MealsListItemUiModel {
+    private fun map(data: Recipe): MealsListItemUiModel {
         return MealsListItemUiModel(data.thumbnailURL, data.title)
 
     }

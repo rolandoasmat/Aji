@@ -1,6 +1,6 @@
 package com.rolandoasmat.aji.model
 
-data class Plate(
+data class Recipe(
     val id: Int,
     val title: String,
     val backdropURL: String,
