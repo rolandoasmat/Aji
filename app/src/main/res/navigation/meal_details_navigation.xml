@@ -7,6 +7,6 @@
 
     <fragment
         android:id="@+id/mealDetailsFragment"
-        android:name="com.rolandoasmat.aji.meal_details.MealDetailsFragment"
+        android:name="com.rolandoasmat.aji.recipe_details.RecipeDetailsFragment"
         android:label="MealDetailsFragment" />
 </navigation>
