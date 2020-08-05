@@ -3,6 +3,7 @@ package com.rolandoasmat.aji.recipe_details
 import androidx.lifecycle.*
 import com.rolandoasmat.aji.RecipesRepository
 import com.rolandoasmat.aji.Resource
+import com.rolandoasmat.aji.Status
 import com.rolandoasmat.aji.model.RecipeDetails
 
 class RecipeDetailsViewModel(recipesRepository: RecipesRepository): ViewModel() {
@@ -26,7 +27,17 @@ class RecipeDetailsViewModel(recipesRepository: RecipesRepository): ViewModel() 
     }
 
     private fun handleRecipeDetailsResponse(response: Resource<RecipeDetails>) {
-
+        when(response.status) {
+            Status.SUCCESS -> {
+                val uimodel = map(response.data!!)
+                _details.value = uimodel
+            }
+        }
     }
+
+    private fun map(data: RecipeDetails): RecipeDetailsUIModel {
+        return RecipeDetailsUIModel(data.title, data.ingredients, data.steps)
+    }
+
 
 }
