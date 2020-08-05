@@ -21,7 +21,7 @@ class RecipeDetailsViewModel(recipesRepository: RecipesRepository): ViewModel() 
     val details: LiveData<RecipeDetailsUIModel>
         get() = _details
 
-    fun getRecipeDetails(recipeID: Int) {
+    fun fetchRecipeDetails(recipeID: Int) {
         _fetchDetails.value = recipeID
     }
 
