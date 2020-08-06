@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.recipe_details
+package com.rolandoasmat.aji.steps
 
 import androidx.fragment.app.Fragment
 
