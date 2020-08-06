@@ -1,11 +1,9 @@
 package com.rolandoasmat.aji.recipes
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,9 +12,7 @@ import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
 import com.rolandoasmat.aji.mealslist.MealListItemCallbacks
-import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_recipes.*
-import kotlinx.android.synthetic.main.item_meal.*
 import javax.inject.Inject
 
 class RecipesFragment : Fragment(), MealListItemCallbacks {
@@ -38,7 +34,11 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetch()
         observeViewModel()
+        breakfastRecipesListView?.setCallback(this)
         dinnerRecipesListView?.setCallback(this)
+        appetizerRecipesListView?.setCallback(this)
+        dessertsRecipesListView?.setCallback(this)
+        drinksRecipesListView?.setCallback(this)
     }
 
     private fun observeViewModel() {

@@ -13,6 +13,7 @@
     <color name="secondaryTextColor">#ffffff</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="translucentGray">#8000</color>
 
 </resources>
