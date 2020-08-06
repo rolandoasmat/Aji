@@ -7,18 +7,10 @@ import com.rolandoasmat.aji.network.AjiNetworkAPI
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
 class RecipesRepository @Inject constructor(
     private val api: AjiNetworkAPI,
     private val coroutineContextProvider: CoroutineContextProvider) {
-
-    fun fetchFeaturedPlate(): LiveData<Resource<Recipe>> {
-        return object : NetworkBoundResource<Recipe, Recipe>(coroutineContextProvider) {
-            override fun processResponse(response: ApiSuccessResponse<Recipe>) = response.body
-            override fun createCall() = api.fetchFeaturedPlate()
-        }.asLiveData()
-    }
 
     fun getBreakfastPlates(): LiveData<Resource<List<Recipe>>> {
         return object : NetworkBoundResource<List<Recipe>, List<Recipe>>(coroutineContextProvider) {

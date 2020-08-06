@@ -42,12 +42,6 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
     }
 
     private fun observeViewModel() {
-        viewModel.featured.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                mealTitle?.text = it.mealTitle
-                ImageLoader.load(it.backdropURL, mealBackdrop)
-            }
-        })
         viewModel.breakfast.observe(viewLifecycleOwner, Observer {
             it?.let { breakfastRecipesListView?.setData(it) }
         })

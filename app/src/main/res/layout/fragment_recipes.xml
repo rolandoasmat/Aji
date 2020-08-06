@@ -14,15 +14,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="Featured"
-                android:textAppearance="@style/RecipeCategoryTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"/>
-            <include layout="@layout/item_meal" />
-
-
-            <TextView
                 android:text="Breakfast"
                 android:textAppearance="@style/RecipeCategoryTitle"
                 android:layout_width="wrap_content"

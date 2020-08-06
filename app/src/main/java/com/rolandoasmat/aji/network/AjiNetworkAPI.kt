@@ -6,8 +6,6 @@ import retrofit2.Response
 
 interface AjiNetworkAPI {
 
-    fun fetchFeaturedPlate(): Response<Recipe>
-
     fun fetchBreakfastPlates(): Response<List<Recipe>>
 
     fun fetchDinnerPlates(): Response<List<Recipe>>

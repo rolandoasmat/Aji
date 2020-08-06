@@ -12,19 +12,6 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
     private val fetchMeals = MutableLiveData<Unit>()
 
-    // Featured
-    private val _featuredRecipe: LiveData<Resource<Recipe>> = Transformations.switchMap(recipesRepository.fetchFeaturedPlate()) {
-        MutableLiveData(it)
-    }
-    private val _featured = MediatorLiveData<MealsListItemUiModel>().apply {
-        addSource(_featuredRecipe) {
-            handleFeaturedMealResponse(it)
-        }
-    }
-    val featured: LiveData<MealsListItemUiModel>
-        get() = _featured
-
-
     // Breakfast
     private val _breakfastPlates: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(recipesRepository.getBreakfastPlates()) {
         MutableLiveData(it)
@@ -98,16 +85,6 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     }
 
     //region Private
-
-    private fun handleFeaturedMealResponse(response: Resource<Recipe>) {
-        when(response.status) {
-            Status.SUCCESS -> {
-                response.data?.let { data ->
-                    _featured.value = map(data)
-                }
-            }
-        }
-    }
 
     private fun handleBreakfastMealsResponse(response: Resource<List<Recipe>>) {
         when(response.status) {
