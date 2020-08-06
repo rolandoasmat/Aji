@@ -13,8 +13,4 @@ class RecipeDetailsViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(f
     )
     override fun getItemCount() = 2
     override fun createFragment(position: Int) = fragments[position]
-
-    fun setIngredients(ingredients: List<String>) {
-        ingredientsFragment.setData(ingredients)
-    }
 }

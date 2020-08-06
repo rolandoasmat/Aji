@@ -24,13 +24,11 @@ class RecipeDetailsFragment: Fragment() {
     private val viewModel: RecipeDetailsViewModel by activityViewModels { viewModelFactory }
 
     private val args: RecipeDetailsFragmentArgs by navArgs()
-    private val viewPagerAdapter by lazy { RecipeDetailsViewPagerAdapter(this) }
     private val tabNames = listOf("Ingredients", "Steps")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity?.applicationContext as? AjiApplication)?.component()?.inject(this)
-        viewModel.fetchRecipeDetails(args.recipeIDArg)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,24 +37,26 @@ class RecipeDetailsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViewPager()
         observeViewModel()
-    }
-    private fun setupViewPager() {
-        viewPager?.adapter = viewPagerAdapter
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = tabNames[position]
-        }.attach()
+        viewModel.fetchRecipeDetails(args.recipeIDArg)
     }
 
     private fun observeViewModel() {
-        viewModel.details.observe(viewLifecycleOwner) {
-            Log.v("RAA", it.toString())
-            (activity as? AppCompatActivity)?.supportActionBar?.title = it.title
-            ImageLoader.load(it.posterURL, poster)
-            description?.text = it.description
-            viewPagerAdapter.setIngredients(it.ingredients)
+        viewModel.details.observe(viewLifecycleOwner) { uiModel ->
+            (activity as? AppCompatActivity)?.supportActionBar?.let {
+                it.title = uiModel.title
+            }
+            ImageLoader.load(uiModel.posterURL, poster)
+            description?.text = uiModel.description
+            setupViewPager()
         }
+    }
+
+    private fun setupViewPager() {
+        viewPager?.adapter = RecipeDetailsViewPagerAdapter(this)
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = tabNames[position]
+        }.attach()
     }
 
 }

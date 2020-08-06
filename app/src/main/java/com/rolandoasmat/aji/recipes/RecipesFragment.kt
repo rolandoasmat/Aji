@@ -26,7 +26,6 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity?.applicationContext as? AjiApplication)?.component()?.inject(this)
-        viewModel.fetch()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,6 +34,7 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.fetch()
         observeViewModel()
         dinnerRecipesListView?.setCallback(this)
     }

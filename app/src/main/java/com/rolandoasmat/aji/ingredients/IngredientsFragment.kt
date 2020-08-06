@@ -46,7 +46,4 @@ class IngredientsFragment: Fragment() {
         }
     }
 
-    fun setData(data: List<String>) {
-    }
-
 }
