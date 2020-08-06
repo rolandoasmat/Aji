@@ -1,13 +1,13 @@
-package com.rolandoasmat.aji.ingredients
+package com.rolandoasmat.aji.steps
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.R
-import kotlinx.android.synthetic.main.item_ingredient.view.*
+import kotlinx.android.synthetic.main.item_step.view.*
 
-class IngredientsAdapter: RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {
+class StepsAdapter: RecyclerView.Adapter<StepsAdapter.ViewHolder>() {
 
     private var ingredients: List<String> = emptyList()
 
@@ -19,7 +19,7 @@ class IngredientsAdapter: RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.item_ingredient, parent, false)
+        val view = inflater.inflate(R.layout.item_step, parent, false)
         return ViewHolder(view)
     }
 
@@ -30,7 +30,7 @@ class IngredientsAdapter: RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() 
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val label = itemView.ingredientLabel
+        private val label = itemView.stepLabel
 
         fun bind(ingredient: String) {
             label.text = ingredient

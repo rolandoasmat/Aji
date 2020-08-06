@@ -18,8 +18,7 @@ import javax.inject.Inject
 
 class IngredientsFragment: Fragment() {
 
-    private val adapter: IngredientsAdapter =
-        IngredientsAdapter()
+    private val adapter = IngredientsAdapter()
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private val viewModel: RecipeDetailsViewModel by activityViewModels { viewModelFactory }
