@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/fragment_recipes"
         android:name="com.rolandoasmat.aji.recipes.RecipesFragment"
-        android:label="@string/recipes"
+        android:label="@string/title_recipes_screen"
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipe_to_recipeDetails"
@@ -19,7 +19,6 @@
     <fragment
         android:id="@+id/fragment_recipe_details"
         android:name="com.rolandoasmat.aji.recipe_details.RecipeDetailsFragment"
-        android:label="@string/recipes_details"
         tools:layout="@layout/fragment_recipe_details" >
         <argument
             android:name="recipeIDArg"

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Ají</string>
-    <string name="recipes">Recipes</string>
+    <string name="title_recipes_screen">Ají: Peruvian recipes</string>
     <string name="saved">Saved</string>
+    <string name="recipes">Recipes</string>
     <string name="title_mealdetails">Meal Details</string>
     <string name="recipes_details">Recipe Details</string>
 </resources>
