@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.recipe_details
+package com.rolandoasmat.aji.ingredients
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
+import com.rolandoasmat.aji.recipe_details.RecipeDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_ingredients.*
 import javax.inject.Inject
 
 class IngredientsFragment: Fragment() {
 
-    private val adapter: IngredientsAdapter = IngredientsAdapter()
+    private val adapter: IngredientsAdapter =
+        IngredientsAdapter()
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private val viewModel: RecipeDetailsViewModel by activityViewModels { viewModelFactory }

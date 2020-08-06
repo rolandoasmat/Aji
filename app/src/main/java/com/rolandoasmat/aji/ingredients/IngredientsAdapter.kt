@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.recipe_details
+package com.rolandoasmat.aji.ingredients
 
 import android.view.LayoutInflater
 import android.view.View

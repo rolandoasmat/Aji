@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.recipe_details
+package com.rolandoasmat.aji.ingredients
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
