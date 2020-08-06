@@ -36,7 +36,7 @@ class RecipeDetailsViewModel(recipesRepository: RecipesRepository): ViewModel() 
     }
 
     private fun map(data: RecipeDetails): RecipeDetailsUIModel {
-        return RecipeDetailsUIModel(data.title, data.ingredients, data.steps)
+        return RecipeDetailsUIModel(data.title, data.posterURL, data.description, data.ingredients, data.steps)
     }
 
 

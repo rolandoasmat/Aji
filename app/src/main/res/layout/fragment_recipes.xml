@@ -2,8 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primaryDarkColor">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,8 +15,7 @@
 
             <TextView
                 android:text="Featured"
-                android:textAppearance="?attr/textAppearanceHeadline5"
-                android:textColor="@color/white"
+                android:textAppearance="@style/RecipeCategoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"/>
@@ -26,8 +24,7 @@
 
             <TextView
                 android:text="Breakfast"
-                android:textAppearance="?attr/textAppearanceHeadline5"
-                android:textColor="@color/white"
+                android:textAppearance="@style/RecipeCategoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -40,8 +37,7 @@
 
             <TextView
                 android:text="Entrees"
-                android:textAppearance="?attr/textAppearanceHeadline5"
-                android:textColor="@color/white"
+                android:textAppearance="@style/RecipeCategoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -53,8 +49,7 @@
 
             <TextView
                 android:text="Appetizers"
-                android:textAppearance="?attr/textAppearanceHeadline5"
-                android:textColor="@color/white"
+                android:textAppearance="@style/RecipeCategoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -66,8 +61,7 @@
 
             <TextView
                 android:text="Dessert"
-                android:textAppearance="?attr/textAppearanceHeadline5"
-                android:textColor="@color/white"
+                android:textAppearance="@style/RecipeCategoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -79,8 +73,7 @@
 
             <TextView
                 android:text="Drinks"
-                android:textAppearance="?attr/textAppearanceHeadline5"
-                android:textColor="@color/white"
+                android:textAppearance="@style/RecipeCategoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

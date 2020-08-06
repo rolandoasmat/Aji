@@ -1,5 +1,6 @@
 package com.rolandoasmat.aji.di
 
+import com.rolandoasmat.aji.recipe_details.IngredientsFragment
 import com.rolandoasmat.aji.recipe_details.RecipeDetailsFragment
 import com.rolandoasmat.aji.recipes.RecipesFragment
 import com.rolandoasmat.aji.saved.SavedFragment
@@ -12,4 +13,5 @@ interface ApplicationComponent {
     fun inject(fragment: RecipesFragment)
     fun inject(fragment: SavedFragment)
     fun inject(fragment: RecipeDetailsFragment)
+    fun inject(fragment: IngredientsFragment)
 }

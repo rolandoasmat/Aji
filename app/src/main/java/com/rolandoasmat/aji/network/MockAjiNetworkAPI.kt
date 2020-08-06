@@ -133,9 +133,11 @@ class MockAjiNetworkAPI: AjiNetworkAPI {
     override fun fetchRecipeDetails(id: Int): Response<RecipeDetails> {
         val id = 1234
         val title = "Test Recipe"
-        val ingredients = listOf("1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple")
+        val posterURL = "https://images-gmi-pmc.edge-generalmills.com/7bbcdd09-3380-4117-951b-1c8098ca984e.jpg"
+        val description = "A delicious meal that will make wildest dreams come true. Super duper extra long description of the meal you are about to prepare."
+        val ingredients = listOf("1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple", "1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple", "1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple")
         val steps = listOf("1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple")
-        return Response.success(RecipeDetails(id,  title, ingredients, steps))
+        return Response.success(RecipeDetails(id,  title, posterURL, description, ingredients, steps))
     }
 
 }

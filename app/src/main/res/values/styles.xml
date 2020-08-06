@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/primaryLightColor</item>
     </style>
 
+    <style name="RecipeCategoryTitle">
+        <item name="android:textColor">@color/primaryDarkColor</item>
+        <item name="android:textSize">18sp</item>
+
+
+    </style>
+
 </resources>
