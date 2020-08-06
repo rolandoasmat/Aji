@@ -127,7 +127,7 @@ class MockAjiNetworkAPI: AjiNetworkAPI {
         val posterURL = "https://images-gmi-pmc.edge-generalmills.com/7bbcdd09-3380-4117-951b-1c8098ca984e.jpg"
         val description = "A delicious meal that will make wildest dreams come true. Super duper extra long description of the meal you are about to prepare."
         val ingredients = listOf("1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple", "1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple", "1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple")
-        val steps = listOf("1 clove of garlic", "the tear of a crocodile", "5 grains of rice", "Kobe beef fed salmon", "apple")
+        val steps = listOf("1. Test step", "2. Test step", "3. Test step", "4. Test step", "5. Test step", "6. Test step", "7. Test step", "8. Test step", "9. Test step", "10. Test step")
         return Response.success(RecipeDetails(id,  title, posterURL, description, ingredients, steps))
     }
 
