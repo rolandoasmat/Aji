@@ -1,6 +1,7 @@
 package com.rolandoasmat.aji.main
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -89,13 +90,13 @@ class MainActivity: AppCompatActivity() {
         // Whenever the selected controller changes, setup the action bar.
         controller.observe(this, Observer { navController ->
             setupActionBarWithNavController(navController)
-//            navController.addOnDestinationChangedListener { _, destination, _ ->
-//                if (destination.label == "Recipes") {
-//                    supportActionBar?.hide()
-//                } else {
-//                    supportActionBar?.show()
-//                }
-//            }
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                if (destination.id == R.id.fragment_recipe_details) {
+                    bottomNavigationView?.visibility = View.GONE
+                } else {
+                    bottomNavigationView?.visibility = View.VISIBLE
+                }
+            }
         })
         currentNavController = controller
     }
