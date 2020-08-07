@@ -15,7 +15,6 @@ class MockAjiNetworkAPI: AjiNetworkAPI {
     }
 
     override fun fetchAppetizerPlates(): Response<List<Recipe>> {
-
         return Response.success(appetizerRecipes)
     }
 
