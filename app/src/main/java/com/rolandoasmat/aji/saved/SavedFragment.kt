@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
+import kotlinx.android.synthetic.main.fragment_saved.*
 import javax.inject.Inject
 
 class SavedFragment : Fragment() {
@@ -30,13 +31,14 @@ class SavedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
-        viewModel.fetch()
     }
 
     private fun observeViewModel() {
         viewModel.saved.observe(viewLifecycleOwner, Observer {
-            // TODO render
+            recipesListView?.setData(it)
         })
     }
+
+
 
 }

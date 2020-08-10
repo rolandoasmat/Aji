@@ -67,4 +67,6 @@ class RecipesRepository @Inject constructor(
 
     fun saveFavoriteRecipe(recipe: Recipe) = databaseRepository.saveFavoriteRecipe(recipe)
 
+    fun loadFavoriteRecipes() = databaseRepository.loadFavoriteRecipes()
+
 }
