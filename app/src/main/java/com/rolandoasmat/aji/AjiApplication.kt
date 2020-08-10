@@ -2,6 +2,7 @@ package com.rolandoasmat.aji
 
 import android.app.Application
 import com.rolandoasmat.aji.di.ApplicationComponent
+import com.rolandoasmat.aji.di.ContextModule
 import com.rolandoasmat.aji.di.DaggerApplicationComponent
 
 class AjiApplication: Application() {
@@ -12,6 +13,7 @@ class AjiApplication: Application() {
         super.onCreate()
         applicationComponent = DaggerApplicationComponent
             .builder()
+            .contextModule(ContextModule(applicationContext))
             .build()
     }
 

@@ -1,6 +1,8 @@
 package com.rolandoasmat.aji
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
+import com.rolandoasmat.aji.db.DatabaseRepository
 import com.rolandoasmat.aji.model.Recipe
 import com.rolandoasmat.aji.model.RecipeDetails
 import com.rolandoasmat.aji.network.AjiNetworkAPI
@@ -10,7 +12,8 @@ import javax.inject.Singleton
 @Singleton
 class RecipesRepository @Inject constructor(
     private val api: AjiNetworkAPI,
-    private val coroutineContextProvider: CoroutineContextProvider) {
+    private val coroutineContextProvider: CoroutineContextProvider,
+    private val databaseRepository: DatabaseRepository) {
 
     fun getBreakfastPlates(): LiveData<Resource<List<Recipe>>> {
         return object : NetworkBoundResource<List<Recipe>, List<Recipe>>(coroutineContextProvider) {
@@ -53,5 +56,15 @@ class RecipesRepository @Inject constructor(
             override fun createCall() = api.fetchRecipeDetails(id)
         }.asLiveData()
     }
+
+    fun isFavoriteRecipe(recipeID: Int): LiveData<Boolean> {
+        return Transformations.map(databaseRepository.getFavoriteRecipe(recipeID)) { entity ->
+            entity != null
+        }
+    }
+
+    fun removeFavoriteRecipe(recipeID: Int) = databaseRepository.deleteFavoriteRecipe(recipeID)
+
+    fun saveFavoriteRecipe(recipe: Recipe) = databaseRepository.saveFavoriteRecipe(recipe)
 
 }

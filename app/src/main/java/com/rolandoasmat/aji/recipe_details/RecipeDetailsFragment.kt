@@ -1,7 +1,6 @@
 package com.rolandoasmat.aji.recipe_details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +38,7 @@ class RecipeDetailsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         viewModel.fetchRecipeDetails(args.recipeIDArg)
+        setupFab()
     }
 
     private fun observeViewModel() {
@@ -50,6 +50,9 @@ class RecipeDetailsFragment: Fragment() {
             description?.text = uiModel.description
             setupViewPager()
         }
+        viewModel.isFavoriteRecipe.observe(viewLifecycleOwner) {
+            fabIcon?.isSelected = it == true
+        }
     }
 
     private fun setupViewPager() {
@@ -57,6 +60,12 @@ class RecipeDetailsFragment: Fragment() {
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = tabNames[position]
         }.attach()
+    }
+
+    private fun setupFab() {
+        fabIcon?.setOnClickListener {
+            viewModel.fabClicked()
+        }
     }
 
 }
