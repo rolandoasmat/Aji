@@ -22,10 +22,12 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.apollographql.apollo.ApolloQueryCall
+import com.apollographql.apollo.coroutines.toDeferred
+import com.apollographql.apollo.exception.ApolloException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 
 /**
  * A generic class that can provide a resource backed by both the sqlite database and the network.
@@ -60,24 +62,28 @@ abstract class NetworkBoundResource<ResultType, RequestType>
 
     private suspend fun fetchFromNetwork() {
         withContext(coroutineContextProvider.io) {
-            val apiResponse = ApiResponse.create(createCall())
-            when (apiResponse) {
-                is ApiSuccessResponse -> {
-                    val response = processResponse(apiResponse)
-                    withContext(coroutineContextProvider.main) {
-                        setValue(Resource.success(response))
-                    }
-                }
-                is ApiEmptyResponse -> {
-                    withContext(coroutineContextProvider.main) {
-                        setValue(Resource.success(null))
-                    }
-                }
-                is ApiErrorResponse -> {
+            try {
+                val response = createCall().toDeferred().await()
+                val data = response.data
+                if (data == null || response.hasErrors()) {
+                    // handle application errors
+                    val errorMessage = response.errors?.first()?.message
                     onFetchFailed()
                     withContext(coroutineContextProvider.main) {
-                        setValue(Resource.error(apiResponse.errorMessage, null))
+                        setValue(Resource.error(errorMessage?: "", null))
                     }
+                } else {
+                    val successResponse = ApiSuccessResponse<RequestType>(data, null)
+                    val processed = processResponse(successResponse)
+                    withContext(coroutineContextProvider.main) {
+                        setValue(Resource.success(processed))
+                    }
+                }
+            } catch (e: ApolloException) {
+                // handle protocol errors
+                onFetchFailed()
+                withContext(coroutineContextProvider.main) {
+                    setValue(Resource.error(e.message ?: "", null))
                 }
             }
         }
@@ -91,16 +97,6 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     @WorkerThread
     protected abstract fun processResponse(response: ApiSuccessResponse<RequestType>): ResultType
 
-//    @WorkerThread
-//    protected abstract fun saveCallResult(item: RequestType)
-
-//    @MainThread
-//    protected abstract fun shouldFetch(data: ResultType?): Boolean
-
-    // TODO add DB support
-//    @MainThread
-//    protected abstract fun loadFromDb(): LiveData<ResultType>
-
     @MainThread
-    protected abstract fun createCall(): Response<RequestType>
+    protected abstract fun createCall(): ApolloQueryCall<RequestType>
 }

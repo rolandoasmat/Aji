@@ -23,6 +23,7 @@ buildscript {
 
         def nav_version = "2.2.2"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath("com.apollographql.apollo:apollo-gradle-plugin:2.2.3")
     }
 }
 

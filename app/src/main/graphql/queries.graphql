@@ -1,0 +1,19 @@
+query listRecipes {
+  listRecipes {
+    items {
+      id
+      title
+      sectionTitle
+    }
+  }
+}
+
+query getRecipeDetails($id: String!) {
+  getRecipeDetails(id: $id) {
+    id
+    title
+    description
+    ingredients
+    steps
+  }
+}
