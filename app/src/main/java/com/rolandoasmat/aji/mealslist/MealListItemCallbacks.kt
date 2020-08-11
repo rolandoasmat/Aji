@@ -8,7 +8,7 @@ interface MealListItemCallbacks {
     /**
      * Meal item image was tapped
      *
-     * @param index Index of item who's image was pressed
+     * @param recipeID Recipe id of the image that was pressed
      */
-    fun onImageTapped(index: Int)
+    fun onImageTapped(recipeID: String)
 }

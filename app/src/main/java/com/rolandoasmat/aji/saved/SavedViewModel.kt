@@ -11,7 +11,7 @@ class SavedViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
     private val _saved = Transformations.map(recipesRepository.loadFavoriteRecipes()) {
         val recipes = it.map { entry ->
-            MealsListItemUiModel(entry.posterURL, entry.name)
+            MealsListItemUiModel(entry.recipeID, entry.posterURL, entry.name)
         }
         MealsListUiModel(recipes)
     }

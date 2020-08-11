@@ -41,21 +41,25 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
         }
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         private val mealBackdrop: ImageView? = view.mealBackdrop
         private val mealTitle: TextView? = view.mealTitle
 
         fun bind(data: MealsListItemUiModel) {
-            mealBackdrop?.let {
-                ImageLoader.load(data.backdropURL, it)
+            mealBackdrop?.let { imageView ->
+                data.backdropURL?.let { backdropURL ->
+                    ImageLoader.load(backdropURL, imageView)
+                }
             }
             mealTitle?.text = data.mealTitle
         }
 
         fun setCallbacks(position: Int, callbacks: MealListItemCallbacks ) {
             mealBackdrop?.setOnClickListener {
-                callbacks.onImageTapped(position)
+                data?.getOrNull(position)?.let { uiModel ->
+                    callbacks.onImageTapped(uiModel.recipeID)
+                }
             }
         }
     }

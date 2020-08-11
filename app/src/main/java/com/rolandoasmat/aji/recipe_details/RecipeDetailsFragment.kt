@@ -46,7 +46,9 @@ class RecipeDetailsFragment: Fragment() {
             (activity as? AppCompatActivity)?.supportActionBar?.let {
                 it.title = uiModel.title
             }
-            ImageLoader.load(uiModel.posterURL, poster)
+            uiModel.posterURL?.let { url ->
+                ImageLoader.load(url, poster)
+            }
             description?.text = uiModel.description
             setupViewPager()
         }

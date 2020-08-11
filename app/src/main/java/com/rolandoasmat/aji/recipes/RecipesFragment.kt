@@ -45,21 +45,9 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
         viewModel.breakfast.observe(viewLifecycleOwner, Observer {
             it?.let { breakfastRecipesListView?.setData(it) }
         })
-        viewModel.dinner.observe(viewLifecycleOwner, Observer {
-            it?.let { dinnerRecipesListView?.setData(it) }
-        })
-        viewModel.appetizers.observe(viewLifecycleOwner, Observer {
-            it?.let { appetizerRecipesListView?.setData(it) }
-        })
-        viewModel.desserts.observe(viewLifecycleOwner, Observer {
-            it?.let { dessertsRecipesListView?.setData(it) }
-        })
-        viewModel.drinks.observe(viewLifecycleOwner, Observer {
-            it?.let { drinksRecipesListView?.setData(it) }
-        })
     }
 
-    override fun onImageTapped(recipeID: Int) {
+    override fun onImageTapped(recipeID: String) {
         val action = RecipesFragmentDirections.actionRecipeToRecipeDetails(recipeID)
         findNavController().navigate(action)
     }

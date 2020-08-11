@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "favorite_recipes")
 data class FavoriteRecipeEntity(
     @PrimaryKey
-    val recipeID: Int,
+    val recipeID: String,
     val name: String,
     @ColumnInfo(name = "poster_url")
-    val posterURL: String
+    val posterURL: String?
 )

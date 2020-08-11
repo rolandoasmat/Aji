@@ -12,14 +12,13 @@ class DatabaseRepository constructor(
     private val scope = CoroutineScope(coroutineContextProvider.io)
 
 
-    fun saveFavoriteRecipe(data: Recipe) {
-        val recipe = FavoriteRecipeEntity(data.id, data.title, data.thumbnailURL)
+    fun saveFavoriteRecipe(recipe: FavoriteRecipeEntity) {
         scope.launch {
             dao.insertFavoriteRecipe(recipe)
         }
     }
 
-    fun deleteFavoriteRecipe(recipeID: Int) {
+    fun deleteFavoriteRecipe(recipeID: String) {
         scope.launch {
             dao.deleteFavoriteRecipe(recipeID)
         }
@@ -27,6 +26,6 @@ class DatabaseRepository constructor(
 
     fun loadFavoriteRecipes() = dao.loadFavoriteRecipes()
 
-    fun getFavoriteRecipe(recipeID: Int) = dao.getFavoriteRecipe(recipeID)
+    fun getFavoriteRecipe(recipeID: String) = dao.getFavoriteRecipe(recipeID)
 
 }

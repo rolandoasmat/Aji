@@ -9,7 +9,7 @@ import com.rolandoasmat.aji.model.RecipeDetails
 
 class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): ViewModel() {
 
-    private val _fetchDetails = MutableLiveData<Int>()
+    private val _fetchDetails = MutableLiveData<String>()
     private val fetchDetails = Transformations.switchMap(_fetchDetails) {
         recipesRepository.fetchRecipeDetails(it)
     }
@@ -29,7 +29,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
 
     //region Public methods
 
-    fun fetchRecipeDetails(recipeID: Int) {
+    fun fetchRecipeDetails(recipeID: String) {
         _fetchDetails.value = recipeID
     }
 
@@ -40,8 +40,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
                     recipesRepository.removeFavoriteRecipe(recipeID)
                 } else {
                     _details.value?.let { uiModel ->
-                        val recipe = Recipe(recipeID, uiModel.title, uiModel.posterURL, uiModel.posterURL)
-                        recipesRepository.saveFavoriteRecipe(recipe)
+                        recipesRepository.saveFavoriteRecipe(uiModel.recipeID, uiModel.title, uiModel.posterURL)
                     }
                 }
             }
@@ -60,7 +59,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     }
 
     private fun map(data: RecipeDetails): RecipeDetailsUIModel {
-        return RecipeDetailsUIModel(data.title, data.posterURL, data.description, data.ingredients, data.steps)
+        return RecipeDetailsUIModel(data.id, data.title, data.posterURL, data.description, data.ingredients, data.steps)
     }
 
 

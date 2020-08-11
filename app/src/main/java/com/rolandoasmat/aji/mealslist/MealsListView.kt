@@ -32,7 +32,7 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
 
     // Callbacks
 
-    override fun onImageTapped(index: Int) {
-        callbacks?.onImageTapped(index)
+    override fun onImageTapped(recipeID: String) {
+        callbacks?.onImageTapped(recipeID)
     }
 }

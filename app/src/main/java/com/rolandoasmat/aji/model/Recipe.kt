@@ -1,7 +1,7 @@
 package com.rolandoasmat.aji.model
 
 data class Recipe(
-    val id: Int,
+    val recipeID: String,
     val title: String,
-    val backdropURL: String,
-    val thumbnailURL: String)
+    val thumbnailURL: String?,
+    val sectionTitle: String)

@@ -13,12 +13,12 @@ interface RecipesDAO {
     fun insertFavoriteRecipe(favoriteRecipe: FavoriteRecipeEntity)
 
     @Query("DELETE FROM favorite_recipes WHERE recipeID LIKE :recipeID")
-    fun deleteFavoriteRecipe(recipeID: Int)
+    fun deleteFavoriteRecipe(recipeID: String)
 
     @Query("SELECT * FROM favorite_recipes")
     fun loadFavoriteRecipes(): LiveData<List<FavoriteRecipeEntity>>
 
     @Query("SELECT * FROM favorite_recipes WHERE recipeID LIKE :recipeID")
-    fun getFavoriteRecipe(recipeID: Int): LiveData<FavoriteRecipeEntity>
+    fun getFavoriteRecipe(recipeID: String): LiveData<FavoriteRecipeEntity>
 
 }
