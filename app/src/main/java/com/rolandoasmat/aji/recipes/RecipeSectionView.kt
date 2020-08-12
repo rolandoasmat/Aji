@@ -13,18 +13,23 @@ class RecipeSectionView(context: Context, section: RecipesUIModel.Section): Cons
         when (section) {
             is RecipesUIModel.Section.SingleCard -> {
                 sectionLabel?.text = section.title
+                // TODO create single card layout option
             }
             is RecipesUIModel.Section.HorizontalRow -> {
                 sectionLabel?.text = section.title
-                recipesListView?.makeHorizontal()
-                recipesListView?.setData(section.items)
+                recipesListView?.setData(section.items, SectionType.HORIZONTAL_ROW)
             }
             is RecipesUIModel.Section.Grid -> {
                 sectionLabel?.text = section.title
-                recipesListView?.makeGrid()
-                recipesListView?.setData(section.items)
+                recipesListView?.setData(section.items, SectionType.GRID)
             }
         }
     }
+
+    enum class SectionType {
+        HORIZONTAL_ROW,
+        GRID
+    }
+
 
 }
