@@ -2,8 +2,10 @@ package com.rolandoasmat.aji.mealslist
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.rolandoasmat.aji.recipes.RecipesUIModel
 
 /**
  * Custom view that encapsulates a list
@@ -15,20 +17,30 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
     private val mealsAdapter: MealsListAdapter = MealsListAdapter(this)
 
     init {
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter = mealsAdapter
+    }
+
+    //region Public
+
+    fun makeHorizontal() {
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    fun makeGrid() {
+        layoutManager = GridLayoutManager(context, 2)
     }
 
     /**
      * Set the list of meals data
      */
-    fun setData(data: MealsListUiModel) {
-        mealsAdapter.setData(data.meals)
+    fun setData(data: List<RecipesUIModel.Entry>) {
+        mealsAdapter.setData(data)
     }
 
     fun setCallback(callbacks: MealListItemCallbacks) {
         this.callbacks = callbacks
     }
+    //endregion
 
     // Callbacks
 

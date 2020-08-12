@@ -7,29 +7,36 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.R
+import com.rolandoasmat.aji.recipes.RecipesUIModel
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.item_meal.view.*
 
 /**
  * Adapter for showing a list of meals
  */
-private typealias MealsList = List<MealsListItemUiModel>
 
 class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
 
-    private var data: MealsList? = null
+    private var data: List<RecipesUIModel.Entry>? = null
 
-    fun setData(data: MealsList) {
+    fun setData(data: List<RecipesUIModel.Entry>) {
         this.data = data
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
-        val layoutID = R.layout.item_meal_narrow
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(layoutID, parent, false)
+        val view = inflater.inflate(viewType, parent, false)
         return ViewHolder(view)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (data?.get(position)?.thumbnailURL == null) {
+            R.layout.item_recipe_no_photo
+        } else {
+            R.layout.item_meal_narrow
+        }
     }
 
     override fun getItemCount(): Int = data?.size ?: 0
@@ -46,17 +53,17 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
         private val mealBackdrop: ImageView? = view.mealBackdrop
         private val mealTitle: TextView? = view.mealTitle
 
-        fun bind(data: MealsListItemUiModel) {
+        fun bind(data: RecipesUIModel.Entry) {
             mealBackdrop?.let { imageView ->
-                data.backdropURL?.let { backdropURL ->
+                data.thumbnailURL?.let { backdropURL ->
                     ImageLoader.load(backdropURL, imageView)
                 }
             }
-            mealTitle?.text = data.mealTitle
+            mealTitle?.text = data.title
         }
 
         fun setCallbacks(position: Int, callbacks: MealListItemCallbacks ) {
-            mealBackdrop?.setOnClickListener {
+            mealTitle?.setOnClickListener {
                 data?.getOrNull(position)?.let { uiModel ->
                     callbacks.onImageTapped(uiModel.recipeID)
                 }

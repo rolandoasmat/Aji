@@ -1,6 +1,7 @@
 package com.rolandoasmat.aji.recipes
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,16 +35,18 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetch()
         observeViewModel()
-        breakfastRecipesListView?.setCallback(this)
-        dinnerRecipesListView?.setCallback(this)
-        appetizerRecipesListView?.setCallback(this)
-        dessertsRecipesListView?.setCallback(this)
-        drinksRecipesListView?.setCallback(this)
+//        recipesListView?.setCallback(this)
     }
 
     private fun observeViewModel() {
         viewModel.breakfast.observe(viewLifecycleOwner, Observer {
-            it?.let { breakfastRecipesListView?.setData(it) }
+            it?.let {
+                Log.v("RAA", it.toString())
+                it.sections.forEach { section ->
+                    val sectionView = RecipeSectionView(requireContext(), section)
+                    sectionsLinearLayout.addView(sectionView)
+                }
+            }
         })
     }
 

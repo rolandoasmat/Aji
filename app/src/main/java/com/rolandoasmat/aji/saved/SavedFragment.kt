@@ -35,7 +35,7 @@ class SavedFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.saved.observe(viewLifecycleOwner, Observer {
-            recipesListView?.setData(it)
+//            recipesListView?.setData(it)
         })
     }
 

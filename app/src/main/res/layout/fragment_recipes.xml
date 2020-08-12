@@ -9,72 +9,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/sectionsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:text="Breakfast"
-                android:textAppearance="@style/RecipeCategoryTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"/>
-            <com.rolandoasmat.aji.mealslist.MealsListView
-                android:id="@+id/breakfastRecipesListView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-            <TextView
-                android:text="Entrees"
-                android:textAppearance="@style/RecipeCategoryTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"/>
-            <com.rolandoasmat.aji.mealslist.MealsListView
-                android:id="@+id/dinnerRecipesListView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="Appetizers"
-                android:textAppearance="@style/RecipeCategoryTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"/>
-            <com.rolandoasmat.aji.mealslist.MealsListView
-                android:id="@+id/appetizerRecipesListView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="Dessert"
-                android:textAppearance="@style/RecipeCategoryTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"/>
-            <com.rolandoasmat.aji.mealslist.MealsListView
-                android:id="@+id/dessertsRecipesListView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="Drinks"
-                android:textAppearance="@style/RecipeCategoryTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"/>
-            <com.rolandoasmat.aji.mealslist.MealsListView
-                android:id="@+id/drinksRecipesListView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+            android:orientation="vertical" />
 
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>
