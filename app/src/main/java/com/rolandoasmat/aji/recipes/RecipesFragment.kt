@@ -35,14 +35,13 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetch()
         observeViewModel()
-//        recipesListView?.setCallback(this)
     }
 
     private fun observeViewModel() {
         viewModel.breakfast.observe(viewLifecycleOwner, Observer {
             it?.let {
                 it.sections.forEach { section ->
-                    val sectionView = RecipeSectionView(requireContext(), section)
+                    val sectionView = RecipeSectionView(requireContext(), section, this)
                     sectionsLinearLayout?.addView(sectionView)
                 }
             }

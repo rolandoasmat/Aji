@@ -15,7 +15,7 @@ import com.rolandoasmat.aji.recipes.RecipesUIModel
 class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs), MealListItemCallbacks {
 
     private var callbacks: MealListItemCallbacks? = null
-    private val mealsAdapter: MealsListAdapter = MealsListAdapter(this)
+    private val mealsAdapter = MealsListAdapter(this)
 
     init {
         adapter = mealsAdapter

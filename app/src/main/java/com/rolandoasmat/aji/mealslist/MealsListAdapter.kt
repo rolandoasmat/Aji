@@ -82,6 +82,11 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
                     callbacks.onImageTapped(uiModel.recipeID)
                 }
             }
+            mealBackdrop?.setOnClickListener {
+                data?.getOrNull(position)?.let { uiModel ->
+                    callbacks.onImageTapped(uiModel.recipeID)
+                }
+            }
         }
     }
 
