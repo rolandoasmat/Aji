@@ -4,7 +4,6 @@ import androidx.lifecycle.*
 import com.rolandoasmat.aji.RecipesRepository
 import com.rolandoasmat.aji.Resource
 import com.rolandoasmat.aji.Status
-import com.rolandoasmat.aji.mealslist.MealsListItemUiModel
 import com.rolandoasmat.aji.model.Recipe
 
 class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
@@ -31,7 +30,6 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     }
 
     //region Private
-
     private fun handleBreakfastMealsResponse(response: Resource<List<Recipe>>) {
         when(response.status) {
             Status.SUCCESS -> {
@@ -70,11 +68,6 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         }
         return RecipesUIModel(sections)
     }
-
-    private fun map(data: Recipe): MealsListItemUiModel {
-        return MealsListItemUiModel(data.recipeID, data.thumbnailURL, data.title)
-    }
-
     //endregion
 
 }

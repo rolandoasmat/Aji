@@ -4,6 +4,7 @@ query listRecipes {
       id
       title
       sectionTitle
+      thumbnailURL
     }
   }
 }

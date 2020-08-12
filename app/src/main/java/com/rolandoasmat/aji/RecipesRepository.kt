@@ -29,7 +29,7 @@ class RecipesRepository @Inject constructor(
 
             override fun processResponse(response: ApiSuccessResponse<ListRecipesQuery.Data>): List<Recipe> {
                 return response.body.listRecipes()?.items()?.map { item ->
-                    Recipe(item.id(), item.title(), null, item.sectionTitle())
+                    Recipe(item.id(), item.title(), item.thumbnailURL(), item.sectionTitle())
                 } ?: emptyList()
             }
 
