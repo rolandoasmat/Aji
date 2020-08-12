@@ -34,11 +34,18 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
         return ViewHolder(view)
     }
 
+    private val isHorizontalRow: Boolean
+        get() = sectionType == RecipeSectionView.SectionType.HORIZONTAL_ROW
+
     override fun getItemViewType(position: Int): Int {
         return if (data?.get(position)?.thumbnailURL == null) {
-            R.layout.item_recipe_no_photo
+            if (isHorizontalRow) {
+                R.layout.item_recipe_no_photo_narrow
+            } else {
+                R.layout.item_recipe_no_photo
+            }
         } else {
-            if (sectionType == RecipeSectionView.SectionType.HORIZONTAL_ROW) {
+            if (isHorizontalRow) {
                 R.layout.item_meal_narrow
             } else {
                 R.layout.item_meal
