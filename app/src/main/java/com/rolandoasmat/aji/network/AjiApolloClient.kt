@@ -4,6 +4,7 @@ import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.ApolloQueryCall
 import com.apollographql.apollo.api.Operation
 import com.apollographql.apollo.api.Query
+import com.rolandoasmat.aji.BuildConfig
 import okhttp3.OkHttpClient
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,13 +18,13 @@ class AjiApolloClient @Inject constructor() {
                 .addInterceptor { chain ->
                     val original = chain.request()
                     val builder = original.newBuilder().method(original.method(), original.body())
-                    builder.header(AUTH_HEADER_PARAM, API_KEY)
+                    builder.header(AUTH_HEADER_PARAM, BuildConfig.API_KEY)
                     chain.proceed(builder.build())
                 }
                 .build()
             return ApolloClient.builder()
                 .okHttpClient(httpClient)
-                .serverUrl(SERVER_URL)
+                .serverUrl(BuildConfig.SERVER_URL)
                 .build()
             }
 
@@ -32,9 +33,7 @@ class AjiApolloClient @Inject constructor() {
     }
 
     companion object {
-        private const val SERVER_URL = ""
-        private const val API_KEY = ""
-        private const val AUTH_HEADER_PARAM = ""
+        private const val AUTH_HEADER_PARAM = "x-api-key"
     }
 
 }

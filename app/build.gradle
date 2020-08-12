@@ -14,6 +14,9 @@ android {
         versionCode rootProject.versionCode
         versionName rootProject.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SERVER_URL", SERVER_URL)
+        buildConfigField("String", "API_KEY", API_KEY)
     }
     buildTypes {
         release {
