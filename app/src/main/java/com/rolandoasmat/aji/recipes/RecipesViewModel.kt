@@ -22,6 +22,10 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     val breakfast: LiveData<RecipesUIModel>
         get() = _breakfast
 
+    private val _loading = MutableLiveData(false)
+    val loading: LiveData<Boolean>
+        get() = _loading
+
     /**
      * Fetch recipes
      */
@@ -31,6 +35,7 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
     //region Private
     private fun handleBreakfastMealsResponse(response: Resource<List<Recipe>>) {
+        _loading.value = response.status == Status.LOADING
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->

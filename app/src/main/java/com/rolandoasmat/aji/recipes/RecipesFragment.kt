@@ -1,13 +1,13 @@
 package com.rolandoasmat.aji.recipes
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
@@ -41,13 +41,19 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
     private fun observeViewModel() {
         viewModel.breakfast.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Log.v("RAA", it.toString())
                 it.sections.forEach { section ->
                     val sectionView = RecipeSectionView(requireContext(), section)
-                    sectionsLinearLayout.addView(sectionView)
+                    sectionsLinearLayout?.addView(sectionView)
                 }
             }
         })
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (it) {
+                loadingBar?.visibility = View.VISIBLE
+            } else {
+                loadingBar?.visibility = View.GONE
+            }
+        }
     }
 
     override fun onImageTapped(recipeID: String) {
