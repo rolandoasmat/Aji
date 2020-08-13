@@ -138,12 +138,12 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="fragment_recipe_details">
+                  <entry key="activity_recipe_details">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
+                            <option name="x" value="12" />
                             <option name="y" value="12" />
                           </Point>
                         </option>

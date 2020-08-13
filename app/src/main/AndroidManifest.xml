@@ -29,6 +29,13 @@
             <!-- This is added to handle a deep link -->
             <nav-graph android:value="@navigation/recipes" />
         </activity>
+
+        <!-- Recipe Details-->
+        <activity
+            android:name=".recipe_details.RecipeDetailsActivity" >
+            <!-- This is added to handle a deep link -->
+            <nav-graph android:value="@navigation/meal_details_navigation" />
+        </activity>
     </application>
 
 </manifest>

@@ -13,16 +13,16 @@
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipe_to_recipeDetails"
-            app:destination="@id/fragment_recipe_details" />
+            app:destination="@id/activity_recipe_details" />
     </fragment>
 
-    <fragment
-        android:id="@+id/fragment_recipe_details"
-        android:name="com.rolandoasmat.aji.recipe_details.RecipeDetailsFragment"
-        tools:layout="@layout/fragment_recipe_details" >
+    <activity
+        android:id="@+id/activity_recipe_details"
+        android:name="com.rolandoasmat.aji.recipe_details.RecipeDetailsActivity"
+        tools:layout="@layout/activity_recipe_details" >
         <argument
             android:name="recipeIDArg"
             app:argType="string" />
-    </fragment>
+    </activity>
 
 </navigation>
