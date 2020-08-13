@@ -1,5 +1,6 @@
 package com.rolandoasmat.aji.recipes
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,15 @@ class RecipesFragment : Fragment(), MealListItemCallbacks {
                 loadingBar?.visibility = View.VISIBLE
             } else {
                 loadingBar?.visibility = View.GONE
+            }
+        }
+        viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let { message ->
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.error_dialog_title)
+                    .setMessage(message)
+                    .show()
+                viewModel.errorHandled()
             }
         }
     }

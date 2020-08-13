@@ -26,11 +26,20 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     val loading: LiveData<Boolean>
         get() = _loading
 
+    private val _error = MutableLiveData<String?>(null)
+    val error: LiveData<String?>
+        get() = _error
+
+
     /**
      * Fetch recipes
      */
     fun fetch() {
         fetchMeals.value = null
+    }
+
+    fun errorHandled() {
+        _error.value = null
     }
 
     //region Private
@@ -41,6 +50,9 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
                 response.data?.let { data ->
                     _breakfast.value = map(data)
                 }
+            }
+            Status.ERROR -> {
+                _error.value = response.message
             }
         }
     }
