@@ -4,7 +4,6 @@ import androidx.lifecycle.*
 import com.rolandoasmat.aji.RecipesRepository
 import com.rolandoasmat.aji.Resource
 import com.rolandoasmat.aji.Status
-import com.rolandoasmat.aji.model.Recipe
 import com.rolandoasmat.aji.model.RecipeDetails
 
 class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): ViewModel() {
@@ -61,6 +60,4 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     private fun map(data: RecipeDetails): RecipeDetailsUIModel {
         return RecipeDetailsUIModel(data.id, data.title, data.posterURL, data.description, data.ingredients, data.steps)
     }
-
-
 }
