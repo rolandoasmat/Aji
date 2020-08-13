@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
+import com.rolandoasmat.aji.recipes.RecipeSectionView
 import kotlinx.android.synthetic.main.fragment_saved.*
 import javax.inject.Inject
 
@@ -35,10 +36,7 @@ class SavedFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.saved.observe(viewLifecycleOwner, Observer {
-//            recipesListView?.setData(it)
+            recipesListView?.setData(it, RecipeSectionView.SectionType.GRID)
         })
     }
-
-
-
 }
