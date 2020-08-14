@@ -19,6 +19,7 @@
     <activity
         android:id="@+id/activity_recipe_details"
         android:name="com.rolandoasmat.aji.recipe_details.RecipeDetailsActivity"
+        android:label="Recipe details"
         tools:layout="@layout/activity_recipe_details" >
         <argument
             android:name="recipeIDArg"

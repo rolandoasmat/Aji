@@ -13,9 +13,15 @@ class RecipeDetailsActivity: AppCompatActivity() {
         intent.extras?.let { bundle ->
             findNavController(R.id.nav_host_fragment).setGraph(R.navigation.meal_details_navigation, bundle)
         }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        return currentNavController?.value?.navigateUp() ?: false
-//    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        if (!findNavController(R.id.nav_host_fragment).navigateUp()){
+            // If nav controller doesn't handle Up navigation, manually press hardware Back button
+            onBackPressed()
+        }
+        return true
+    }
 }
