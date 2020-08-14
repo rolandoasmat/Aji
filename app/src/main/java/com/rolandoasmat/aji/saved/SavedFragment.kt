@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
 import com.rolandoasmat.aji.recipes.RecipeSectionView
+import com.rolandoasmat.aji.recipes.RecipesFragmentDirections
+import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
 import javax.inject.Inject
 
-class SavedFragment : Fragment() {
+class SavedFragment : Fragment(), RecipesRecyclerView.Callbacks {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -32,11 +35,17 @@ class SavedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        recipesRecyclerView?.setCallback(this)
     }
 
     private fun observeViewModel() {
         viewModel.saved.observe(viewLifecycleOwner, Observer {
-            recipesListView?.setData(it, RecipeSectionView.SectionType.GRID)
+            recipesRecyclerView?.setData(it, RecipeSectionView.SectionType.GRID)
         })
+    }
+
+    override fun onImageTapped(recipeID: String) {
+        val action = SavedFragmentDirections.actionRecipeToRecipeDetails(recipeID)
+        findNavController().navigate(action)
     }
 }

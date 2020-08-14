@@ -11,6 +11,19 @@
         android:name="com.rolandoasmat.aji.saved.SavedFragment"
         android:label="@string/saved"
         tools:layout="@layout/fragment_saved" >
+        <action
+            android:id="@+id/action_recipe_to_recipeDetails"
+            app:destination="@id/activity_recipe_details" />
     </fragment>
+
+    <activity
+        android:id="@+id/activity_recipe_details"
+        android:name="com.rolandoasmat.aji.recipe_details.RecipeDetailsActivity"
+        android:label="Recipe details"
+        tools:layout="@layout/activity_recipe_details" >
+        <argument
+            android:name="recipeIDArg"
+            app:argType="string" />
+    </activity>
 
 </navigation>
