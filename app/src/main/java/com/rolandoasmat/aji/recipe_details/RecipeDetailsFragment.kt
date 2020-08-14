@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
@@ -17,14 +16,11 @@ import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
 import javax.inject.Inject
 
-// TODO viewmodel loading can be done in the activity instead of here in the fragment
-
 class RecipeDetailsFragment: Fragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private val viewModel: RecipeDetailsViewModel by activityViewModels { viewModelFactory }
 
-    private val args: RecipeDetailsFragmentArgs by navArgs()
     private val tabNames = listOf("Ingredients", "Steps")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +39,13 @@ class RecipeDetailsFragment: Fragment() {
     }
 
     private fun observeViewModel() {
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (it) {
+                loadingBar?.visibility = View.VISIBLE
+            } else {
+                loadingBar?.visibility = View.GONE
+            }
+        }
         viewModel.details.observe(viewLifecycleOwner) { uiModel ->
             (activity as? AppCompatActivity)?.supportActionBar?.let {
                 it.title = uiModel.title

@@ -22,6 +22,10 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     val details: LiveData<RecipeDetailsUIModel>
         get() = _details
 
+    private val _loading = MutableLiveData(false)
+    val loading: LiveData<Boolean>
+        get() = _loading
+
     val isFavoriteRecipe = Transformations.switchMap(_fetchDetails) {
         recipesRepository.isFavoriteRecipe(it)
     }
@@ -49,6 +53,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     //endregion
 
     private fun handleRecipeDetailsResponse(response: Resource<RecipeDetails>) {
+        _loading.value = response.status == Status.LOADING
         when(response.status) {
             Status.SUCCESS -> {
                 val uimodel = map(response.data!!)
