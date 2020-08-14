@@ -13,11 +13,11 @@ import androidx.navigation.fragment.findNavController
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
-import com.rolandoasmat.aji.mealslist.MealListItemCallbacks
+import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import javax.inject.Inject
 
-class RecipesFragment : Fragment(), MealListItemCallbacks {
+class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory

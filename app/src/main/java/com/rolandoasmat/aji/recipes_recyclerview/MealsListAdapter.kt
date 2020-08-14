@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.mealslist
+package com.rolandoasmat.aji.recipes_recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +16,9 @@ import kotlinx.android.synthetic.main.item_meal.view.*
  * Adapter for showing a list of meals
  */
 
-class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
+class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
 
+    private var callbacks: RecipesRecyclerView.Callbacks? = null
     private var data: List<RecipesUIModel.Entry>? = null
     private var sectionType: RecipeSectionView.SectionType? = null
 
@@ -25,6 +26,10 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
         this.sectionType = sectionType
         this.data = data
         notifyDataSetChanged()
+    }
+
+    fun setCallbacks(callbacks: RecipesRecyclerView.Callbacks) {
+        this.callbacks = callbacks
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -58,7 +63,6 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         data?.getOrNull(position)?.let {
             holder.bind(it)
-            holder.setCallbacks(position, callbacks)
         }
     }
 
@@ -67,6 +71,19 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
         private val mealBackdrop: ImageView? = view.mealBackdrop
         private val mealTitle: TextView? = view.mealTitle
 
+        init {
+            mealTitle?.setOnClickListener {
+                data?.getOrNull(adapterPosition)?.let { uiModel ->
+                    callbacks?.onImageTapped(uiModel.recipeID)
+                }
+            }
+            mealBackdrop?.setOnClickListener {
+                data?.getOrNull(adapterPosition)?.let { uiModel ->
+                    callbacks?.onImageTapped(uiModel.recipeID)
+                }
+            }
+        }
+
         fun bind(data: RecipesUIModel.Entry) {
             mealBackdrop?.let { imageView ->
                 data.thumbnailURL?.let { backdropURL ->
@@ -74,19 +91,6 @@ class MealsListAdapter(private val callbacks: MealListItemCallbacks) : RecyclerV
                 }
             }
             mealTitle?.text = data.title
-        }
-
-        fun setCallbacks(position: Int, callbacks: MealListItemCallbacks ) {
-            mealTitle?.setOnClickListener {
-                data?.getOrNull(position)?.let { uiModel ->
-                    callbacks.onImageTapped(uiModel.recipeID)
-                }
-            }
-            mealBackdrop?.setOnClickListener {
-                data?.getOrNull(position)?.let { uiModel ->
-                    callbacks.onImageTapped(uiModel.recipeID)
-                }
-            }
         }
     }
 

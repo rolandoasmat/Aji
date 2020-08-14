@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.mealslist
+package com.rolandoasmat.aji.recipes_recyclerview
 
 /**
  * Represents an item of the meals list.

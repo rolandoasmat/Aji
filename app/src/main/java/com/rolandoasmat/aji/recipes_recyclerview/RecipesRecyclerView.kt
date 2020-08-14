@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.mealslist
+package com.rolandoasmat.aji.recipes_recyclerview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -12,10 +12,9 @@ import com.rolandoasmat.aji.recipes.RecipesUIModel
  * Custom view that encapsulates a list
  * of meals
  */
-class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs), MealListItemCallbacks {
+class RecipesRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
 
-    private var callbacks: MealListItemCallbacks? = null
-    private val mealsAdapter = MealsListAdapter(this)
+    private val mealsAdapter = MealsListAdapter()
 
     init {
         adapter = mealsAdapter
@@ -32,8 +31,8 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
         mealsAdapter.setData(data, sectionType)
     }
 
-    fun setCallback(callbacks: MealListItemCallbacks) {
-        this.callbacks = callbacks
+    fun setCallback(callbacks: Callbacks) {
+        mealsAdapter.setCallbacks(callbacks)
     }
     //endregion
 
@@ -52,9 +51,7 @@ class MealsListView(context: Context, attrs: AttributeSet) : RecyclerView(contex
         layoutManager = GridLayoutManager(context, 2)
     }
 
-    // Callbacks
-
-    override fun onImageTapped(recipeID: String) {
-        callbacks?.onImageTapped(recipeID)
+    interface Callbacks {
+        fun onImageTapped(recipeID: String)
     }
 }

@@ -35,7 +35,7 @@
             android:name=".recipe_details.RecipeDetailsActivity"
             android:label="Recipe details">
             <!-- This is added to handle a deep link -->
-            <nav-graph android:value="@navigation/meal_details_navigation" />
+            <nav-graph android:value="@navigation/recipe_details" />
         </activity>
     </application>
 

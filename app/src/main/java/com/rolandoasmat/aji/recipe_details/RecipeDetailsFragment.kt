@@ -17,6 +17,8 @@ import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
 import javax.inject.Inject
 
+// TODO viewmodel loading can be done in the activity instead of here in the fragment
+
 class RecipeDetailsFragment: Fragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory

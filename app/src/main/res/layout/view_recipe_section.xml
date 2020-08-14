@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Breakfast"/>
 
-    <com.rolandoasmat.aji.mealslist.MealsListView
+    <com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
         android:id="@+id/recipesListView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

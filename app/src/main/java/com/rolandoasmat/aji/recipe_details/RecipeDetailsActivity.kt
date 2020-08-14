@@ -11,7 +11,7 @@ class RecipeDetailsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_details)
         intent.extras?.let { bundle ->
-            findNavController(R.id.nav_host_fragment).setGraph(R.navigation.meal_details_navigation, bundle)
+            findNavController(R.id.nav_host_fragment).setGraph(R.navigation.recipe_details, bundle)
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
