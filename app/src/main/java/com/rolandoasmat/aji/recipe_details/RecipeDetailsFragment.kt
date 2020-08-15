@@ -1,5 +1,6 @@
 package com.rolandoasmat.aji.recipe_details
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,15 @@ class RecipeDetailsFragment: Fragment() {
                 loadingBar?.visibility = View.VISIBLE
             } else {
                 loadingBar?.visibility = View.GONE
+            }
+        }
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let { message ->
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.error_dialog_title)
+                    .setMessage(message)
+                    .show()
+                viewModel.errorHandled()
             }
         }
         viewModel.details.observe(viewLifecycleOwner) { uiModel ->

@@ -26,6 +26,10 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     val loading: LiveData<Boolean>
         get() = _loading
 
+    private val _errorMessage = MutableLiveData<String?>(null)
+    val errorMessage: LiveData<String?>
+        get() = _errorMessage
+
     val isFavoriteRecipe = Transformations.switchMap(_fetchDetails) {
         recipesRepository.isFavoriteRecipe(it)
     }
@@ -49,11 +53,18 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
             }
         }
     }
+    
+    fun errorHandled() {
+        _errorMessage.value = null
+    }
 
     //endregion
 
     private fun handleRecipeDetailsResponse(response: Resource<RecipeDetails>) {
         _loading.value = response.status == Status.LOADING
+        if (response.status == Status.ERROR) {
+            _errorMessage.value = response.message
+        }
         when(response.status) {
             Status.SUCCESS -> {
                 val uimodel = map(response.data!!)
