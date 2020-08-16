@@ -15,6 +15,7 @@ import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.ViewModelFactory
 import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_recipes.*
+import kotlinx.android.synthetic.main.fragment_recipes.loadingBar
 import javax.inject.Inject
 
 class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
@@ -36,10 +37,13 @@ class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetch()
         observeViewModel()
+        pullToRefresh?.setOnRefreshListener {
+            viewModel.refresh()
+        }
     }
 
     private fun observeViewModel() {
-        viewModel.breakfast.observe(viewLifecycleOwner, Observer {
+        viewModel.recipes.observe(viewLifecycleOwner, Observer {
             it?.let {
                 it.sections.forEach { section ->
                     val sectionView = RecipeSectionView(requireContext(), section, this)
@@ -52,6 +56,7 @@ class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
                 loadingBar?.visibility = View.VISIBLE
             } else {
                 loadingBar?.visibility = View.GONE
+                pullToRefresh?.isRefreshing = false
             }
         }
         viewModel.error.observe(viewLifecycleOwner) { errorMessage ->

@@ -40,6 +40,12 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
         _fetchDetails.value = recipeID
     }
 
+    fun refresh() {
+        _fetchDetails.value.let {
+            _fetchDetails.value = it
+        }
+    }
+
     fun fabClicked() {
         _fetchDetails.value?.let { recipeID ->
             isFavoriteRecipe.value?.let { isFavoriteRecipe ->

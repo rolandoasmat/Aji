@@ -36,6 +36,9 @@ class RecipeDetailsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setupFab()
+        pullToRefresh?.setOnRefreshListener {
+            viewModel.refresh()
+        }
     }
 
     private fun observeViewModel() {
@@ -44,6 +47,7 @@ class RecipeDetailsFragment: Fragment() {
                 loadingBar?.visibility = View.VISIBLE
             } else {
                 loadingBar?.visibility = View.GONE
+                pullToRefresh?.isRefreshing = false
             }
         }
         viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->

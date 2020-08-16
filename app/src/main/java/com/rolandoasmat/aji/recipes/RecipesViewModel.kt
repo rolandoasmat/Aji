@@ -8,19 +8,18 @@ import com.rolandoasmat.aji.model.Recipe
 
 class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
-    private val fetchMeals = MutableLiveData<Unit>()
-
     // Breakfast
-    private val _breakfastPlates: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(recipesRepository.fetchRecipes()) {
-        MutableLiveData(it)
+    private val _fetchRecipes = MutableLiveData<Unit>()
+    private val _recipesSource: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(_fetchRecipes) {
+        recipesRepository.fetchRecipes()
     }
-    private val _breakfast = MediatorLiveData<RecipesUIModel>().apply {
-        addSource(_breakfastPlates) {
+    private val _recipes = MediatorLiveData<RecipesUIModel>().apply {
+        addSource(_recipesSource) {
             handleBreakfastMealsResponse(it)
         }
     }
-    val breakfast: LiveData<RecipesUIModel>
-        get() = _breakfast
+    val recipes: LiveData<RecipesUIModel>
+        get() = _recipes
 
     private val _loading = MutableLiveData(false)
     val loading: LiveData<Boolean>
@@ -30,17 +29,21 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     val error: LiveData<String?>
         get() = _error
 
+    //region Public
 
-    /**
-     * Fetch recipes
-     */
     fun fetch() {
-        fetchMeals.value = null
+        _fetchRecipes.value = Unit
+    }
+
+    fun refresh() {
+        fetch()
     }
 
     fun errorHandled() {
         _error.value = null
     }
+
+    //endregion
 
     //region Private
     private fun handleBreakfastMealsResponse(response: Resource<List<Recipe>>) {
@@ -48,7 +51,7 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
-                    _breakfast.value = map(data)
+                    _recipes.value = map(data)
                 }
             }
             Status.ERROR -> {
