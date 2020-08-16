@@ -40,8 +40,10 @@ class IngredientsFragment: Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.details.observe(viewLifecycleOwner) {
-            adapter.setData(it.ingredients)
+        viewModel.details.observe(viewLifecycleOwner) { uiModel ->
+            uiModel?.let {
+                adapter.setData(it.ingredients)
+            }
         }
     }
 

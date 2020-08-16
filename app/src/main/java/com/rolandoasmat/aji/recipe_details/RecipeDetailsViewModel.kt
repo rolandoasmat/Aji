@@ -19,7 +19,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
         }
     }
 
-    val details: LiveData<RecipeDetailsUIModel>
+    val details: LiveData<RecipeDetailsUIModel?>
         get() = _details
 
     private val _loading = MutableLiveData(false)
@@ -53,7 +53,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
             }
         }
     }
-    
+
     fun errorHandled() {
         _errorMessage.value = null
     }

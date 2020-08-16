@@ -59,6 +59,7 @@
         android:id="@+id/fabIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:visibility="gone"
         android:layout_margin="16dp"
         android:elevation="4dp"
         android:src="@drawable/heart_background"

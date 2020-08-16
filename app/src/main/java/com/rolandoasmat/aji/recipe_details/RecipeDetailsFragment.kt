@@ -32,7 +32,6 @@ class RecipeDetailsFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_recipe_details, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
@@ -57,14 +56,17 @@ class RecipeDetailsFragment: Fragment() {
             }
         }
         viewModel.details.observe(viewLifecycleOwner) { uiModel ->
-            (activity as? AppCompatActivity)?.supportActionBar?.let {
-                it.title = uiModel.title
+            uiModel?.let { data ->
+                (activity as? AppCompatActivity)?.supportActionBar?.let {
+                    it.title = data.title
+                }
+                data.posterURL?.let { url ->
+                    ImageLoader.load(url, poster)
+                }
+                description?.text = data.description
+                setupViewPager()
+                fabIcon?.visibility = View.VISIBLE
             }
-            uiModel.posterURL?.let { url ->
-                ImageLoader.load(url, poster)
-            }
-            description?.text = uiModel.description
-            setupViewPager()
         }
         viewModel.isFavoriteRecipe.observe(viewLifecycleOwner) {
             fabIcon?.isSelected = it == true

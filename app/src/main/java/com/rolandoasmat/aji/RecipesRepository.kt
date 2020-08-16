@@ -39,7 +39,7 @@ class RecipesRepository @Inject constructor(
     fun fetchRecipeDetails(id: String): LiveData<Resource<RecipeDetails>> {
         return object: NetworkBoundResource<RecipeDetails, GetRecipeDetailsQuery.Data>(coroutineContextProvider) {
             override fun createCall(): ApolloQueryCall<GetRecipeDetailsQuery.Data> {
-                val query = GetRecipeDetailsQuery(id) // TODO replace with id once table is filled out
+                val query = GetRecipeDetailsQuery(id)
                 return ajiApolloClient.query(query)
             }
 

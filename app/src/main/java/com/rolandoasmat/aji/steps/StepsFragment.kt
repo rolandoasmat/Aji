@@ -41,8 +41,10 @@ class StepsFragment: Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.details.observe(viewLifecycleOwner) {
-            adapter.setData(it.steps)
+        viewModel.details.observe(viewLifecycleOwner) { uiModel ->
+            uiModel?.let {
+                adapter.setData(it.steps)
+            }
         }
     }
 
