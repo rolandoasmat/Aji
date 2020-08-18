@@ -39,6 +39,7 @@ class RecipeDetailsFragment: Fragment() {
         setupFab()
         pullToRefresh?.setOnRefreshListener {
             viewModel.refresh()
+            pullToRefresh?.isRefreshing = false
         }
         toolbar?.navigationIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_arrow_back_24, null)
         toolbar?.setNavigationOnClickListener {
@@ -52,7 +53,6 @@ class RecipeDetailsFragment: Fragment() {
                 loadingBar?.visibility = View.VISIBLE
             } else {
                 loadingBar?.visibility = View.GONE
-                pullToRefresh?.isRefreshing = false
             }
         }
         viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
