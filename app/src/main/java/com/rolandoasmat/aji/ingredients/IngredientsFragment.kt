@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
-import com.rolandoasmat.aji.ViewModelFactory
+import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.recipe_details.RecipeDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_ingredients.*
 import javax.inject.Inject

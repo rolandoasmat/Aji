@@ -2,7 +2,7 @@ package com.rolandoasmat.aji.di
 
 import android.content.Context
 import androidx.room.Room
-import com.rolandoasmat.aji.CoroutineContextProvider
+import com.rolandoasmat.aji.repositories.CoroutineContextProvider
 import com.rolandoasmat.aji.db.AppDatabase
 import com.rolandoasmat.aji.db.DatabaseRepository
 import com.rolandoasmat.aji.db.RecipesDAO

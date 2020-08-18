@@ -1,9 +1,9 @@
 package com.rolandoasmat.aji.recipes
 
 import androidx.lifecycle.*
-import com.rolandoasmat.aji.RecipesRepository
-import com.rolandoasmat.aji.Resource
-import com.rolandoasmat.aji.Status
+import com.rolandoasmat.aji.repositories.RecipesRepository
+import com.rolandoasmat.aji.network.Resource
+import com.rolandoasmat.aji.network.Status
 import com.rolandoasmat.aji.model.Recipe
 
 class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {

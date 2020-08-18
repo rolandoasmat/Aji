@@ -1,7 +1,6 @@
 package com.rolandoasmat.aji.main
 
 import android.os.Bundle
-import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -46,7 +45,7 @@ import com.rolandoasmat.aji.R
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import com.rolandoasmat.aji.setupWithNavController
+import com.rolandoasmat.aji.extensions.setupWithNavController
 
 /**
  * An activity that inflates a layout that has a [BottomNavigationView].

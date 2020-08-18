@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji
+package com.rolandoasmat.aji.network
 
 /*
  * Copyright (C) 2017 The Android Open Source Project

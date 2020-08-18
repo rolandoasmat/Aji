@@ -12,7 +12,7 @@ import androidx.lifecycle.observe
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
-import com.rolandoasmat.aji.ViewModelFactory
+import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
 import javax.inject.Inject

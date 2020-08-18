@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji
+package com.rolandoasmat.aji.network
 
 /*
  * Copyright (C) 2017 The Android Open Source Project
@@ -28,7 +28,9 @@ import java.util.regex.Pattern
 sealed class ApiResponse<T> {
     companion object {
         fun <T> create(error: Throwable): ApiErrorResponse<T> {
-            return ApiErrorResponse(error.message ?: "unknown error")
+            return ApiErrorResponse(
+                error.message ?: "unknown error"
+            )
         }
 
         fun <T> create(response: Response<T>): ApiResponse<T> {
@@ -49,7 +51,9 @@ sealed class ApiResponse<T> {
                 } else {
                     msg
                 }
-                ApiErrorResponse(errorMsg ?: "unknown error")
+                ApiErrorResponse(
+                    errorMsg ?: "unknown error"
+                )
             }
         }
     }

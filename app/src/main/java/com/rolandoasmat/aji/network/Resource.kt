@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji
+package com.rolandoasmat.aji.network
 
 /*
  * Copyright (C) 2017 The Android Open Source Project
@@ -16,7 +16,7 @@ package com.rolandoasmat.aji
  * limitations under the License.
  */
 
-import com.rolandoasmat.aji.Status.*
+import com.rolandoasmat.aji.network.Status.*
 
 /**
  * A generic class that holds a value with its loading status.

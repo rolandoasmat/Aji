@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.navArgs
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
-import com.rolandoasmat.aji.ViewModelFactory
+import com.rolandoasmat.aji.di.ViewModelFactory
 import javax.inject.Inject
 
 class RecipeDetailsActivity: AppCompatActivity() {

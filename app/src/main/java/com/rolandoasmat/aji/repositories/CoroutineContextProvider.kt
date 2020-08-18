@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji
+package com.rolandoasmat.aji.repositories
 
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject

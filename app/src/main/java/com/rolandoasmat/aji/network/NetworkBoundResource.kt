@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji
+package com.rolandoasmat.aji.network
 
 /*
  * Copyright (C) 2017 The Android Open Source Project
@@ -25,6 +25,7 @@ import androidx.lifecycle.MutableLiveData
 import com.apollographql.apollo.ApolloQueryCall
 import com.apollographql.apollo.coroutines.toDeferred
 import com.apollographql.apollo.exception.ApolloException
+import com.rolandoasmat.aji.repositories.CoroutineContextProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -73,7 +74,11 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                         setValue(Resource.error(errorMessage?: "", null))
                     }
                 } else {
-                    val successResponse = ApiSuccessResponse<RequestType>(data, null)
+                    val successResponse =
+                        ApiSuccessResponse<RequestType>(
+                            data,
+                            null
+                        )
                     val processed = processResponse(successResponse)
                     withContext(coroutineContextProvider.main) {
                         setValue(Resource.success(processed))

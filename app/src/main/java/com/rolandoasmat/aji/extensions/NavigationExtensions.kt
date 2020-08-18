@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji
+package com.rolandoasmat.aji.extensions
 
 /*
  * Copyright 2019, The Android Open Source Project
@@ -26,6 +26,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.rolandoasmat.aji.R
 
 /**
  * Manages the various graphs needed for a [BottomNavigationView].
@@ -51,12 +52,13 @@ fun BottomNavigationView.setupWithNavController(
         val fragmentTag = getFragmentTag(index)
 
         // Find or create the Navigation host fragment
-        val navHostFragment = obtainNavHostFragment(
-            fragmentManager,
-            fragmentTag,
-            navGraphId,
-            containerId
-        )
+        val navHostFragment =
+            obtainNavHostFragment(
+                fragmentManager,
+                fragmentTag,
+                navGraphId,
+                containerId
+            )
 
         // Obtain its id
         val graphId = navHostFragment.navController.graph.id
@@ -72,9 +74,16 @@ fun BottomNavigationView.setupWithNavController(
         if (this.selectedItemId == graphId) {
             // Update livedata with the selected graph
             selectedNavController.value = navHostFragment.navController
-            attachNavHostFragment(fragmentManager, navHostFragment, index == 0)
+            attachNavHostFragment(
+                fragmentManager,
+                navHostFragment,
+                index == 0
+            )
         } else {
-            detachNavHostFragment(fragmentManager, navHostFragment)
+            detachNavHostFragment(
+                fragmentManager,
+                navHostFragment
+            )
         }
     }
 
@@ -106,7 +115,8 @@ fun BottomNavigationView.setupWithNavController(
                             R.anim.nav_default_enter_anim,
                             R.anim.nav_default_exit_anim,
                             R.anim.nav_default_pop_enter_anim,
-                            R.anim.nav_default_pop_exit_anim)
+                            R.anim.nav_default_pop_exit_anim
+                        )
                         .attach(selectedFragment)
                         .setPrimaryNavigationFragment(selectedFragment)
                         .apply {
@@ -164,12 +174,13 @@ private fun BottomNavigationView.setupDeepLinks(
         val fragmentTag = getFragmentTag(index)
 
         // Find or create the Navigation host fragment
-        val navHostFragment = obtainNavHostFragment(
-            fragmentManager,
-            fragmentTag,
-            navGraphId,
-            containerId
-        )
+        val navHostFragment =
+            obtainNavHostFragment(
+                fragmentManager,
+                fragmentTag,
+                navGraphId,
+                containerId
+            )
         // Handle Intent
         if (navHostFragment.navController.handleDeepLink(intent)
             && selectedItemId != navHostFragment.navController.graph.id) {

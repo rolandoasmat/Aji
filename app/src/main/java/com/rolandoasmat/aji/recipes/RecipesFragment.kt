@@ -12,7 +12,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
-import com.rolandoasmat.aji.ViewModelFactory
+import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import kotlinx.android.synthetic.main.fragment_recipes.loadingBar

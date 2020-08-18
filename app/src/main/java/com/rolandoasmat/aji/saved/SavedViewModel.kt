@@ -3,7 +3,7 @@ package com.rolandoasmat.aji.saved
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.rolandoasmat.aji.RecipesRepository
+import com.rolandoasmat.aji.repositories.RecipesRepository
 import com.rolandoasmat.aji.recipes.RecipesUIModel
 
 class SavedViewModel(recipesRepository: RecipesRepository) : ViewModel() {

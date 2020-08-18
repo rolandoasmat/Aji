@@ -1,9 +1,9 @@
 package com.rolandoasmat.aji.recipe_details
 
 import androidx.lifecycle.*
-import com.rolandoasmat.aji.RecipesRepository
-import com.rolandoasmat.aji.Resource
-import com.rolandoasmat.aji.Status
+import com.rolandoasmat.aji.repositories.RecipesRepository
+import com.rolandoasmat.aji.network.Resource
+import com.rolandoasmat.aji.network.Status
 import com.rolandoasmat.aji.model.RecipeDetails
 
 class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): ViewModel() {
