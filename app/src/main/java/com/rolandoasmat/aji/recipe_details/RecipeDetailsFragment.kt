@@ -10,7 +10,6 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
@@ -76,7 +75,7 @@ class RecipeDetailsFragment: Fragment() {
                 description?.text = data.description
                 setupViewPager()
                 fabIcon?.visibility = View.VISIBLE
-                toolbar?.title = data.title
+                recipeTitle?.text = data.title
             }
         }
         viewModel.isFavoriteRecipe.observe(viewLifecycleOwner) {
@@ -89,6 +88,7 @@ class RecipeDetailsFragment: Fragment() {
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = tabNames[position]
         }.attach()
+        viewPager?.isUserInputEnabled = false
     }
 
     private fun setupFab() {

@@ -57,30 +57,63 @@
             android:nestedScrollingEnabled="false">
 
             <TextView
+                android:id="@+id/recipeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Lomo Saltado"/>
+
+            <TextView
                 android:id="@+id/description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recipeTitle"
                 android:padding="8dp"
                 tools:text="Test super duper extra long recipe description. Test super duper extra long recipe description. Test super duper extra long recipe description."/>
 
             <TextView
                 android:id="@+id/durationLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Duration"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="15 min"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description"/>
+                app:layout_constraintTop_toBottomOf="@id/description"
+                app:layout_constraintEnd_toStartOf="@id/servingsLabel"/>
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:background="@color/primaryColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/durationLabel"
+                app:layout_constraintBottom_toBottomOf="@id/durationLabel"/>
 
             <TextView
                 android:id="@+id/servingsLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Servings"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/durationLabel"/>
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="4 Servings"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/durationLabel"
+                app:layout_constraintTop_toTopOf="@id/durationLabel"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
