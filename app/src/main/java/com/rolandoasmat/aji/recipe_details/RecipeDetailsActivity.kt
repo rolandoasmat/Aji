@@ -26,7 +26,7 @@ class RecipeDetailsActivity: AppCompatActivity() {
         intent.extras?.let { bundle ->
             findNavController(R.id.nav_host_fragment).setGraph(R.navigation.recipe_details, bundle)
         }
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.hide()
         viewModel.fetchRecipeDetails(args.recipeIDArg)
     }
 
