@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
@@ -38,6 +40,10 @@ class RecipeDetailsFragment: Fragment() {
         setupFab()
         pullToRefresh?.setOnRefreshListener {
             viewModel.refresh()
+        }
+        toolbar?.navigationIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_arrow_back_24, null)
+        toolbar?.setNavigationOnClickListener {
+            (activity as? AppCompatActivity)?.onSupportNavigateUp()
         }
     }
 
