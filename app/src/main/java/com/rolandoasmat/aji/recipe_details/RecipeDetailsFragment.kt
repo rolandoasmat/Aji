@@ -37,10 +37,10 @@ class RecipeDetailsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setupFab()
-        pullToRefresh?.setOnRefreshListener {
-            viewModel.refresh()
-            pullToRefresh?.isRefreshing = false
-        }
+//        pullToRefresh?.setOnRefreshListener {
+//            viewModel.refresh()
+//            pullToRefresh?.isRefreshing = false
+//        }
         toolbar?.navigationIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_arrow_back_24, null)
         toolbar?.setNavigationOnClickListener {
             (activity as? AppCompatActivity)?.onSupportNavigateUp()
