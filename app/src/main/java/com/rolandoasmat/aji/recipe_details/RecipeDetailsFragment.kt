@@ -14,8 +14,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
+import com.rolandoasmat.aji.extensions.gone
+import com.rolandoasmat.aji.extensions.setOnCollapsedListener
+import com.rolandoasmat.aji.extensions.visible
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
+import kotlinx.android.synthetic.main.fragment_recipe_details.loadingBar
+import kotlinx.android.synthetic.main.fragment_recipe_details.pullToRefresh
 import javax.inject.Inject
 
 class RecipeDetailsFragment: Fragment() {
@@ -41,14 +46,29 @@ class RecipeDetailsFragment: Fragment() {
         toolbar?.setNavigationOnClickListener {
             (activity as? AppCompatActivity)?.onSupportNavigateUp()
         }
+
+        appBarLayout?.setOnCollapsedListener { collapsed ->
+            if (collapsed) {
+                viewModel.details.value?.title?.let { title ->
+                    collapsingToolbar?.title = title
+                }
+            } else {
+                collapsingToolbar?.title = ""
+            }
+        }
+
+        pullToRefresh?.setOnRefreshListener {
+            viewModel.refresh()
+            pullToRefresh?.isRefreshing = false
+        }
     }
 
     private fun observeViewModel() {
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it) {
-                loadingBar?.visibility = View.VISIBLE
+                loadingBar?.visible()
             } else {
-                loadingBar?.visibility = View.GONE
+                loadingBar?.gone()
             }
         }
         viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
@@ -69,6 +89,9 @@ class RecipeDetailsFragment: Fragment() {
                     ImageLoader.load(url, poster)
                 }
                 description?.text = data.description
+                durationLabel?.text = data.cookingTime
+                servingsLabel?.text = data.servingSize
+                divider?.visible()
                 setupViewPager()
                 fabIcon?.visibility = View.VISIBLE
                 recipeTitle?.text = data.title

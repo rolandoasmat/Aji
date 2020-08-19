@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
+import com.rolandoasmat.aji.extensions.gone
+import com.rolandoasmat.aji.extensions.visible
 import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import kotlinx.android.synthetic.main.fragment_recipes.loadingBar
@@ -39,6 +41,7 @@ class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
         observeViewModel()
         pullToRefresh?.setOnRefreshListener {
             viewModel.refresh()
+            pullToRefresh?.isRefreshing = false
         }
     }
 
@@ -53,10 +56,9 @@ class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
         })
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it) {
-                loadingBar?.visibility = View.VISIBLE
+                loadingBar?.visible()
             } else {
-                loadingBar?.visibility = View.GONE
-                pullToRefresh?.isRefreshing = false
+                loadingBar?.gone()
             }
         }
         viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
