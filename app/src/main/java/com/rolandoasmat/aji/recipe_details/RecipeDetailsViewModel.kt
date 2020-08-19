@@ -80,6 +80,14 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     }
 
     private fun map(data: RecipeDetails): RecipeDetailsUIModel {
-        return RecipeDetailsUIModel(data.id, data.title, data.posterURL, data.description, data.ingredients, data.steps)
+        return RecipeDetailsUIModel(
+            data.id,
+            data.title,
+            data.posterURL,
+            data.description,
+            data.cookingTime ?: "--",
+            data.servingSize ?: "--",
+            data.ingredients + data.ingredients + data.ingredients + data.ingredients + data.ingredients,
+            data.steps)
     }
 }

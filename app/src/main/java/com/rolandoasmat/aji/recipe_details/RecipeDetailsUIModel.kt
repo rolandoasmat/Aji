@@ -5,5 +5,7 @@ data class RecipeDetailsUIModel(
     val title: String,
     val posterURL: String?,
     val description: String,
+    val cookingTime: String,
+    val servingSize: String,
     val ingredients: List<String>,
     val steps: List<String>)
