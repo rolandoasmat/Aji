@@ -87,7 +87,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
             data.description,
             data.cookingTime ?: "--",
             data.servingSize ?: "--",
-            data.ingredients + data.ingredients + data.ingredients + data.ingredients + data.ingredients,
+            data.ingredients,
             data.steps)
     }
 }

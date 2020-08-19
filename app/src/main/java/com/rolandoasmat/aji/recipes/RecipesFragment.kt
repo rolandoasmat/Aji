@@ -48,6 +48,7 @@ class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
     private fun observeViewModel() {
         viewModel.recipes.observe(viewLifecycleOwner, Observer {
             it?.let {
+                sectionsLinearLayout?.removeAllViews()
                 it.sections.forEach { section ->
                     val sectionView = RecipeSectionView(requireContext(), section, this)
                     sectionsLinearLayout?.addView(sectionView)
