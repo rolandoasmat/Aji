@@ -53,8 +53,8 @@ class RecipesRepository @Inject constructor(
                     recipeDetails.title() ?: "",
                     recipeDetails.imageURL(),
                     recipeDetails.description() ?: "",
-                    null,
-                    null,
+                    recipeDetails.duration(),
+                    recipeDetails.servings(),
                     recipeDetails.ingredients(),
                     recipeDetails.steps())
             }
