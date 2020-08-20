@@ -39,7 +39,7 @@ class SavedFragment : Fragment(), RecipesRecyclerView.Callbacks {
 
     private fun observeViewModel() {
         viewModel.saved.observe(viewLifecycleOwner, Observer {
-            recipesRecyclerView?.setData(it, RecipeSectionView.SectionType.GRID)
+            recipesRecyclerView?.setData(it, RecipeSectionView.SectionType.VERTICAL_COLUMN)
         })
     }
 

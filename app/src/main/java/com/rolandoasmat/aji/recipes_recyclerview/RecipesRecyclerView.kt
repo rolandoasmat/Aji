@@ -38,6 +38,7 @@ class RecipesRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(
 
     private fun updateSectionType(type: RecipeSectionView.SectionType) {
         when (type) {
+            RecipeSectionView.SectionType.VERTICAL_COLUMN -> makeVertical()
             RecipeSectionView.SectionType.HORIZONTAL_ROW -> makeHorizontal()
             RecipeSectionView.SectionType.GRID -> makeGrid()
         }
@@ -45,6 +46,10 @@ class RecipesRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(
 
     private fun makeHorizontal() {
         layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun makeVertical() {
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
     private fun makeGrid() {

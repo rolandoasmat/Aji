@@ -68,19 +68,20 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
             val value = action.value
             when (value.count()) {
                 0 -> { } // no-op
-                1 -> {
-                    val entry = RecipesUIModel.Entry(value[0].recipeID, value[0].title, value[0].thumbnailURL)
-                    val section = RecipesUIModel.Section.SingleCard(key, entry)
-                    sections.add(section)
-                }
                 else -> {
                     val entries = value.map {
                         RecipesUIModel.Entry(it.recipeID, it.title, it.thumbnailURL)
                     }
-                    val section = if (value.count() <= 4) {
-                        RecipesUIModel.Section.Grid(key, entries)
-                    } else {
-                        RecipesUIModel.Section.HorizontalRow(key, entries)
+                    val section = when (value.count()) {
+                        1, 2 -> {
+                            RecipesUIModel.Section.VerticalColumn(key, entries)
+                        }
+                        3, 4 -> {
+                            RecipesUIModel.Section.Grid(key, entries)
+                        }
+                        else -> {
+                            RecipesUIModel.Section.HorizontalRow(key, entries)
+                        }
                     }
                     sections.add(section)
                 }

@@ -12,9 +12,9 @@ class RecipeSectionView(context: Context, section: RecipesUIModel.Section, callb
         inflate(context, R.layout.view_recipe_section, this)
         recipesListView?.setCallback(callbacks)
         when (section) {
-            is RecipesUIModel.Section.SingleCard -> {
+            is RecipesUIModel.Section.VerticalColumn -> {
                 sectionLabel?.text = section.title
-                // TODO create single card layout option
+                recipesListView?.setData(section.items, SectionType.VERTICAL_COLUMN)
             }
             is RecipesUIModel.Section.HorizontalRow -> {
                 sectionLabel?.text = section.title
@@ -28,6 +28,7 @@ class RecipeSectionView(context: Context, section: RecipesUIModel.Section, callb
     }
 
     enum class SectionType {
+        VERTICAL_COLUMN,
         HORIZONTAL_ROW,
         GRID
     }
