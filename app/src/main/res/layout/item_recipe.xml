@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/mealBackdrop"
+            android:id="@+id/imageBackdrop"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
@@ -20,7 +20,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/mealTitle"
+        android:id="@+id/titleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/RecipeCardTitle"

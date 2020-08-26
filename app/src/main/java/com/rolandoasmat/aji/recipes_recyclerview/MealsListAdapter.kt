@@ -10,7 +10,7 @@ import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.recipes.RecipeSectionView
 import com.rolandoasmat.aji.recipes.RecipesUIModel
 import com.rolandoasmat.aji.services.ImageLoader
-import kotlinx.android.synthetic.main.item_meal.view.*
+import kotlinx.android.synthetic.main.item_recipe.view.*
 
 /**
  * Adapter for showing a list of meals
@@ -51,9 +51,9 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
             }
         } else {
             if (isHorizontalRow) {
-                R.layout.item_meal_narrow
+                R.layout.item_recipe_narrow
             } else {
-                R.layout.item_meal
+                R.layout.item_recipe
             }
         }
     }
@@ -68,8 +68,8 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        private val mealBackdrop: ImageView? = view.mealBackdrop
-        private val mealTitle: TextView? = view.mealTitle
+        private val mealBackdrop: ImageView? = view.imageBackdrop
+        private val mealTitle: TextView? = view.titleLabel
 
         init {
             mealTitle?.setOnClickListener {
