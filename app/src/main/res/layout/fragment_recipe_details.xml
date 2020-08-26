@@ -131,11 +131,13 @@
                     android:id="@+id/viewPager"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="70dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tabs"
                     app:layout_constraintBottom_toBottomOf="parent"
                     tools:background="@color/translucentGray"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -168,6 +170,19 @@
             android:background="@drawable/hear_fab_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/beginRecipeButton"
+            android:text="BEGIN"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/fabIcon"
+            app:layout_constraintTop_toTopOf="@id/fabIcon"
+            app:layout_constraintBottom_toBottomOf="@id/fabIcon"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
