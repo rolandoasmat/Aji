@@ -12,11 +12,7 @@ import com.rolandoasmat.aji.recipes.RecipesUIModel
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.item_recipe.view.*
 
-/**
- * Adapter for showing a list of meals
- */
-
-class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
+class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
 
     private var callbacks: RecipesRecyclerView.Callbacks? = null
     private var data: List<RecipesUIModel.Entry>? = null
@@ -68,16 +64,16 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        private val mealBackdrop: ImageView? = view.imageBackdrop
-        private val mealTitle: TextView? = view.titleLabel
+        private val imageBackdrop: ImageView? = view.imageBackdrop
+        private val titleLabel: TextView? = view.titleLabel
 
         init {
-            mealTitle?.setOnClickListener {
+            titleLabel?.setOnClickListener {
                 data?.getOrNull(adapterPosition)?.let { uiModel ->
                     callbacks?.onImageTapped(uiModel.recipeID)
                 }
             }
-            mealBackdrop?.setOnClickListener {
+            imageBackdrop?.setOnClickListener {
                 data?.getOrNull(adapterPosition)?.let { uiModel ->
                     callbacks?.onImageTapped(uiModel.recipeID)
                 }
@@ -85,12 +81,12 @@ class MealsListAdapter : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
         }
 
         fun bind(data: RecipesUIModel.Entry) {
-            mealBackdrop?.let { imageView ->
+            imageBackdrop?.let { imageView ->
                 data.thumbnailURL?.let { backdropURL ->
                     ImageLoader.load(backdropURL, imageView)
                 }
             }
-            mealTitle?.text = data.title
+            titleLabel?.text = data.title
         }
     }
 

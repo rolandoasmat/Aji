@@ -15,7 +15,7 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     }
     private val _recipes = MediatorLiveData<RecipesUIModel>().apply {
         addSource(_recipesSource) {
-            handleBreakfastMealsResponse(it)
+            handleRecipesResponse(it)
         }
     }
     val recipes: LiveData<RecipesUIModel>
@@ -46,7 +46,7 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     //endregion
 
     //region Private
-    private fun handleBreakfastMealsResponse(response: Resource<List<Recipe>>) {
+    private fun handleRecipesResponse(response: Resource<List<Recipe>>) {
         _loading.value = response.status == Status.LOADING
         when(response.status) {
             Status.SUCCESS -> {

@@ -8,31 +8,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.recipes.RecipeSectionView
 import com.rolandoasmat.aji.recipes.RecipesUIModel
 
-/**
- * Custom view that encapsulates a list
- * of meals
- */
 class RecipesRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
 
-    private val mealsAdapter = MealsListAdapter()
+    private val recipesAdapter = RecipesAdapter()
 
     init {
-        adapter = mealsAdapter
+        adapter = recipesAdapter
         makeHorizontal()
     }
 
     //region Public
-
-    /**
-     * Set the list of meals data
-     */
     fun setData(data: List<RecipesUIModel.Entry>, sectionType: RecipeSectionView.SectionType) {
         updateSectionType(sectionType)
-        mealsAdapter.setData(data, sectionType)
+        recipesAdapter.setData(data, sectionType)
     }
 
     fun setCallback(callbacks: Callbacks) {
-        mealsAdapter.setCallbacks(callbacks)
+        recipesAdapter.setCallbacks(callbacks)
     }
     //endregion
 
