@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+<!--TODO break up description and amount into 2 separate labels-->
     <TextView
         android:id="@+id/ingredientLabel"
         android:layout_width="match_parent"
