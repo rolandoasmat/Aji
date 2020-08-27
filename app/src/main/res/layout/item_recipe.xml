@@ -23,6 +23,12 @@
             android:scaleType="centerCrop"
             tools:background="@color/primaryDarkColor"/>
 
+        <View
+            android:id="@+id/gradient"
+            android:background="@drawable/gradient"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <TextView
             android:id="@+id/titleLabel"
             android:layout_width="0dp"
@@ -33,7 +39,5 @@
             android:textAppearance="@style/RecipeCardTitle"
             android:padding="4dp"
             tools:text="Lomo Saltado"/>
-        
-<!--        TODO add gray gradient effect-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
