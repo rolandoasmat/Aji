@@ -30,9 +30,11 @@ class StepsAdapter: RecyclerView.Adapter<StepsAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        private val stepNumberLabel = itemView.stepNumberLabel
         private val label = itemView.stepLabel
 
         fun bind(ingredient: String) {
+            stepNumberLabel.text = (adapterPosition+1).toString()
             label.text = ingredient
         }
     }
