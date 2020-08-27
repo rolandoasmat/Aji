@@ -76,7 +76,10 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
                         1, 2 -> {
                             RecipesUIModel.Section.VerticalColumn(key, entries)
                         }
-                        3, 4 -> {
+                        3 -> {
+                            RecipesUIModel.Section.HorizontalRow(key, entries)
+                        }
+                        4 -> {
                             RecipesUIModel.Section.Grid(key, entries)
                         }
                         else -> {
