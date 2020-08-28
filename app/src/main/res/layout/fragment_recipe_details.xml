@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/lightGray">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -31,7 +32,13 @@
                 app:layout_collapseMode="parallax"
                 tools:background="@color/primaryLightColor"
                 tools:layout_height="120dp"/>
+            <View
+                android:id="@+id/gradient"
+                android:background="@drawable/gradient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
+            <!-- TODO move title out of here and into collapsing toolbar-->
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -53,82 +60,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/recipeTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="8dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Lomo Saltado"/>
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recipeTitle"
-                android:padding="8dp"
-                tools:text="Test super duper extra long recipe description. Test super duper extra long recipe description. Test super duper extra long recipe description."/>
-
-            <TextView
-                android:id="@+id/durationLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="8dp"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description"
-                app:layout_constraintEnd_toStartOf="@id/servingsLabel"
-                tools:text="15 min"/>
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="2dp"
-                android:layout_height="0dp"
-                android:visibility="gone"
-                android:background="@color/primaryColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/durationLabel"
-                app:layout_constraintBottom_toBottomOf="@id/durationLabel"/>
-
-            <TextView
-                android:id="@+id/servingsLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="8dp"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/durationLabel"
-                app:layout_constraintTop_toTopOf="@id/durationLabel"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="4 Servings"/>
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/servingsLabel"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:background="@color/primaryDarkColor"/>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="70dp"
+                android:paddingBottom="70dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tabs"
