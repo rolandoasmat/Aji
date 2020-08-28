@@ -15,7 +15,6 @@ import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.extensions.gone
-import com.rolandoasmat.aji.extensions.setOnCollapsedListener
 import com.rolandoasmat.aji.extensions.visible
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
@@ -28,7 +27,7 @@ class RecipeDetailsFragment: Fragment() {
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private val viewModel: RecipeDetailsViewModel by activityViewModels { viewModelFactory }
 
-    private val tabNames = listOf("Ingredients", "Steps")
+    private val tabNames = listOf("Info", "Ingredients", "Steps")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +44,6 @@ class RecipeDetailsFragment: Fragment() {
         toolbar?.navigationIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_arrow_back_24, null)
         toolbar?.setNavigationOnClickListener {
             (activity as? AppCompatActivity)?.onSupportNavigateUp()
-        }
-
-        appBarLayout?.setOnCollapsedListener { collapsed ->
-            if (collapsed) {
-                viewModel.details.value?.title?.let { title ->
-                    collapsingToolbar?.title = title
-                }
-            } else {
-                collapsingToolbar?.title = ""
-            }
         }
 
         pullToRefresh?.setOnRefreshListener {
@@ -85,16 +74,12 @@ class RecipeDetailsFragment: Fragment() {
                 (activity as? AppCompatActivity)?.supportActionBar?.let {
                     it.title = data.title
                 }
+                collapsingToolbar?.title = data.title
                 data.posterURL?.let { url ->
                     ImageLoader.load(url, poster)
                 }
-                description?.text = data.description
-                durationLabel?.text = data.cookingTime
-                servingsLabel?.text = data.servingSize
-                divider?.visible()
                 setupViewPager()
                 fabIcon?.visibility = View.VISIBLE
-                recipeTitle?.text = data.title
             }
         }
         viewModel.isFavoriteRecipe.observe(viewLifecycleOwner) {
