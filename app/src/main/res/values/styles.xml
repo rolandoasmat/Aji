@@ -21,6 +21,7 @@
     <style name="RecipeCategoryTitle">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline3</item>
         <item name="android:textColor">@color/primaryDarkColor</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">22sp</item>
     </style>
 
