@@ -9,9 +9,9 @@ import kotlinx.android.synthetic.main.item_ingredient.view.*
 
 class IngredientsAdapter: RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {
 
-    private var ingredients: List<String> = emptyList()
+    private var ingredients: List<IngredientUIModel> = emptyList()
 
-    fun setData(data: List<String>) {
+    fun setData(data: List<IngredientUIModel>) {
         this.ingredients = data
         notifyDataSetChanged()
     }
@@ -30,10 +30,12 @@ class IngredientsAdapter: RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() 
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val label = itemView.ingredientLabel
+        private val ingredientLabel = itemView.ingredientLabel
+        private val ingredientAmountLabel = itemView.ingredientAmountLabel
 
-        fun bind(ingredient: String) {
-            label.text = ingredient
+        fun bind(ingredient: IngredientUIModel) {
+            ingredientLabel.text = ingredient.title
+            ingredientAmountLabel.text = ingredient.amount
         }
     }
 }
