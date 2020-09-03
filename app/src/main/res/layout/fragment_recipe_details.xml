@@ -108,7 +108,7 @@
 
         <Button
             android:id="@+id/beginRecipeButton"
-            android:text="BEGIN"
+            android:text="@string/begin_recipe_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
