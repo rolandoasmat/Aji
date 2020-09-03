@@ -5,4 +5,7 @@
     <string name="recipes">Recipes</string>
     <string name="recipes_details">Recipe Details</string>
     <string name="error_dialog_title">Error</string>
+
+    <!-- Saved screen-->
+    <string name="no_saved_recipes">No recipes found!\nBrowse recipes and save for later cooking.</string>
 </resources>

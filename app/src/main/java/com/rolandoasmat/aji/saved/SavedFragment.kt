@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
+import com.rolandoasmat.aji.extensions.gone
+import com.rolandoasmat.aji.extensions.visible
 import com.rolandoasmat.aji.recipes.RecipeSectionView
 import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
@@ -40,6 +42,11 @@ class SavedFragment : Fragment(), RecipesRecyclerView.Callbacks {
     private fun observeViewModel() {
         viewModel.saved.observe(viewLifecycleOwner, Observer {
             recipesRecyclerView?.setData(it, RecipeSectionView.SectionType.VERTICAL_COLUMN)
+            if (it.isNullOrEmpty()){
+                emptyStateLabel?.visible()
+            } else {
+                emptyStateLabel?.gone()
+            }
         })
     }
 
