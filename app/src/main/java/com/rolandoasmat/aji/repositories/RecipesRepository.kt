@@ -10,6 +10,7 @@ import com.rolandoasmat.aji.network.NetworkBoundResource
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.db.DatabaseRepository
 import com.rolandoasmat.aji.db.FavoriteRecipeEntity
+import com.rolandoasmat.aji.model.Ingredient
 import com.rolandoasmat.aji.model.Recipe
 import com.rolandoasmat.aji.model.RecipeDetails
 import com.rolandoasmat.aji.network.AjiApolloClient
@@ -48,6 +49,13 @@ class RecipesRepository @Inject constructor(
 
             override fun processResponse(response: ApiSuccessResponse<GetRecipeDetailsQuery.Data>): RecipeDetails {
                 val recipeDetails = response.body.recipeDetails ?: throw IllegalStateException("Empty recipe details")
+                val ingredients = mutableListOf<Ingredient>()
+                recipeDetails.ingredients()?.forEach {
+                    it?.let {
+                        val ingredient = Ingredient(it.name(), it.amount())
+                        ingredients.add(ingredient)
+                    }
+                }
                 return RecipeDetails(
                     recipeDetails.id(),
                     recipeDetails.title() ?: "",
@@ -55,7 +63,7 @@ class RecipesRepository @Inject constructor(
                     recipeDetails.description() ?: "",
                     recipeDetails.duration(),
                     recipeDetails.servings(),
-                    recipeDetails.ingredients(),
+                    ingredients,
                     recipeDetails.steps())
             }
         }.asLiveData()
