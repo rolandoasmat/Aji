@@ -1,6 +1,7 @@
 package com.rolandoasmat.aji.recipe_details
 
 import androidx.lifecycle.*
+import com.rolandoasmat.aji.ingredients.IngredientUIModel
 import com.rolandoasmat.aji.repositories.RecipesRepository
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.network.Status
@@ -80,6 +81,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     }
 
     private fun map(data: RecipeDetails): RecipeDetailsUIModel {
+        val ingredients = data.ingredients.map { IngredientUIModel(it.name, it.quantity) }
         return RecipeDetailsUIModel(
             data.id,
             data.title,
@@ -87,7 +89,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
             data.description,
             data.cookingTime ?: "--",
             data.servingSize ?: "--",
-            data.ingredients,
+            ingredients,
             data.steps)
     }
 }

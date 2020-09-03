@@ -42,8 +42,7 @@ class IngredientsFragment: Fragment() {
     private fun observeViewModel() {
         viewModel.details.observe(viewLifecycleOwner) { uiModel ->
             uiModel?.let {
-                val ingredients = it.ingredients.map { IngredientUIModel(it, "5 grams") }
-                adapter.setData(ingredients)
+                adapter.setData(it.ingredients)
             }
         }
     }
