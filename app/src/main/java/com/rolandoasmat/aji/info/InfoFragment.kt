@@ -42,7 +42,6 @@ class InfoFragment: Fragment() {
                 durationLabel?.text = data.cookingTime
                 servingsLabel?.text = data.servingSize
                 divider?.visible()
-                recipeTitle?.text = data.title
             }
         }
     }
