@@ -1,6 +1,7 @@
 package com.rolandoasmat.aji.recipe_details
 
 import com.rolandoasmat.aji.ingredients.IngredientUIModel
+import com.rolandoasmat.aji.steps.StepUIModel
 
 data class RecipeDetailsUIModel(
     val recipeID: String,
@@ -10,4 +11,5 @@ data class RecipeDetailsUIModel(
     val cookingTime: String,
     val servingSize: String,
     val ingredients: List<IngredientUIModel>,
-    val steps: List<String>)
+    val steps: List<StepUIModel>
+)
