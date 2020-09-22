@@ -8,4 +8,5 @@ data class RecipeDetails(
     val cookingTime: String?,
     val servingSize: String?,
     val ingredients: List<Ingredient>,
-    val steps: List<String>)
+    val steps: List<Step>,
+    val videoURL: String?)
