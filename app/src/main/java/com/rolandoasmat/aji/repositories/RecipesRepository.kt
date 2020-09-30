@@ -57,7 +57,7 @@ class RecipesRepository @Inject constructor(
                         ingredients.add(ingredient)
                     }
                 }
-                val steps = recipeDetails.steps().map { Step(it, null, null) }
+                val steps = recipeDetails.steps().map { Step(it, null) }
                 return RecipeDetails(
                     recipeDetails.id(),
                     recipeDetails.title() ?: "",
