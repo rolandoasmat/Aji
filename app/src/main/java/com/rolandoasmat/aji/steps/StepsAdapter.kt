@@ -9,9 +9,9 @@ import kotlinx.android.synthetic.main.item_step.view.*
 
 class StepsAdapter: RecyclerView.Adapter<StepsAdapter.ViewHolder>() {
 
-    private var ingredients: List<String> = emptyList()
+    private var ingredients: List<StepListItemUIModel> = emptyList()
 
-    fun setData(data: List<String>) {
+    fun setData(data: List<StepListItemUIModel>) {
         this.ingredients = data
         notifyDataSetChanged()
     }
@@ -33,9 +33,9 @@ class StepsAdapter: RecyclerView.Adapter<StepsAdapter.ViewHolder>() {
         private val stepNumberLabel = itemView.stepNumberLabel
         private val label = itemView.stepLabel
 
-        fun bind(ingredient: String) {
+        fun bind(ingredient: StepListItemUIModel) {
             stepNumberLabel.text = (adapterPosition+1).toString()
-            label.text = ingredient
+            label.text = ingredient.text
         }
     }
 }

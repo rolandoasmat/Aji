@@ -6,8 +6,7 @@ import com.rolandoasmat.aji.repositories.RecipesRepository
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.network.Status
 import com.rolandoasmat.aji.model.RecipeDetails
-import com.rolandoasmat.aji.model.Step
-import com.rolandoasmat.aji.steps.StepUIModel
+import com.rolandoasmat.aji.steps.StepListItemUIModel
 
 class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): ViewModel() {
 
@@ -92,6 +91,6 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
             data.cookingTime ?: "--",
             data.servingSize ?: "--",
             ingredients,
-            data.steps.map { StepUIModel(it.title , null, null) })
+            data.steps.map { StepListItemUIModel(it.title) })
     }
 }

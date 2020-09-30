@@ -13,6 +13,7 @@ import com.rolandoasmat.aji.db.FavoriteRecipeEntity
 import com.rolandoasmat.aji.model.Ingredient
 import com.rolandoasmat.aji.model.Recipe
 import com.rolandoasmat.aji.model.RecipeDetails
+import com.rolandoasmat.aji.model.Step
 import com.rolandoasmat.aji.network.AjiApolloClient
 import java.lang.IllegalStateException
 import javax.inject.Inject
@@ -56,6 +57,7 @@ class RecipesRepository @Inject constructor(
                         ingredients.add(ingredient)
                     }
                 }
+                val steps = recipeDetails.steps().map { Step(it, null, null) }
                 return RecipeDetails(
                     recipeDetails.id(),
                     recipeDetails.title() ?: "",
@@ -64,7 +66,8 @@ class RecipesRepository @Inject constructor(
                     recipeDetails.duration(),
                     recipeDetails.servings(),
                     ingredients,
-                    recipeDetails.steps())
+                    steps,
+                null)
             }
         }.asLiveData()
     }
