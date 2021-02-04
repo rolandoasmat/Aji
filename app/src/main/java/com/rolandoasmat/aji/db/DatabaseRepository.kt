@@ -6,8 +6,7 @@ import kotlinx.coroutines.launch
 
 class DatabaseRepository constructor(
     private val dao: RecipesDAO,
-    private val coroutineContextProvider: CoroutineContextProvider
-) {
+    private val coroutineContextProvider: CoroutineContextProvider) {
 
     private val scope = CoroutineScope(coroutineContextProvider.io)
 
