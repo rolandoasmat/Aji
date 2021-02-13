@@ -8,7 +8,7 @@ import com.apollographql.apollo.ApolloQueryCall
 import com.rolandoasmat.aji.network.ApiSuccessResponse
 import com.rolandoasmat.aji.network.NetworkBoundResource
 import com.rolandoasmat.aji.network.Resource
-import com.rolandoasmat.aji.db.DatabaseRepository
+import com.rolandoasmat.aji.repositories.DatabaseRepository
 import com.rolandoasmat.aji.db.FavoriteRecipeEntity
 import com.rolandoasmat.aji.model.Ingredient
 import com.rolandoasmat.aji.model.Recipe

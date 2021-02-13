@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.rolandoasmat.aji.repositories.CoroutineContextProvider
 import com.rolandoasmat.aji.db.AppDatabase
-import com.rolandoasmat.aji.db.DatabaseRepository
+import com.rolandoasmat.aji.repositories.DatabaseRepository
 import com.rolandoasmat.aji.db.RecipesDAO
 import dagger.Module
 import dagger.Provides
@@ -27,7 +27,10 @@ class DatabaseModule {
 
     @Provides
     fun provideRecipesRepository(dao: RecipesDAO, coroutineContextProvider: CoroutineContextProvider): DatabaseRepository {
-        return DatabaseRepository(dao, coroutineContextProvider)
+        return DatabaseRepository(
+            dao,
+            coroutineContextProvider
+        )
     }
 
 }
