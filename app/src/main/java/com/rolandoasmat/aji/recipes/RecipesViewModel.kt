@@ -60,36 +60,13 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         }
     }
 
-    private fun map(data: List<Recipe>): RecipesUIModel {
-        val groups = data.sortedBy { it.recipeID.toInt() } .groupBy { it.sectionTitle }
+    private fun map(recipes: List<Recipe>): RecipesUIModel {
         val sections = mutableListOf<RecipesUIModel.Section>()
-        groups.forEach { action ->
-            val key = action.key
-            val value = action.value
-            when (value.count()) {
-                0 -> { } // no-op
-                else -> {
-                    val entries = value.map {
-                        RecipesUIModel.Entry(it.recipeID, it.title, it.thumbnailURL)
-                    }
-                    val section = when (value.count()) {
-                        1, 2 -> {
-                            RecipesUIModel.Section.VerticalColumn(key, entries)
-                        }
-                        3 -> {
-                            RecipesUIModel.Section.HorizontalRow(key, entries)
-                        }
-                        4 -> {
-                            RecipesUIModel.Section.Grid(key, entries)
-                        }
-                        else -> {
-                            RecipesUIModel.Section.HorizontalRow(key, entries)
-                        }
-                    }
-                    sections.add(section)
-                }
-            }
+        val items = recipes.map {
+            RecipesUIModel.Entry(it.id, it.title, it.thumbnailURL)
         }
+        val section = RecipesUIModel.Section.Grid("Items", items)
+        sections.add(section)
         return RecipesUIModel(sections)
     }
     //endregion

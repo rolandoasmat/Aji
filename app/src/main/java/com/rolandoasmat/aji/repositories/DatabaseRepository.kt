@@ -2,7 +2,6 @@ package com.rolandoasmat.aji.repositories
 
 import com.rolandoasmat.aji.db.FavoriteRecipeEntity
 import com.rolandoasmat.aji.db.RecipesDAO
-import com.rolandoasmat.aji.repositories.CoroutineContextProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

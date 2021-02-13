@@ -8,7 +8,6 @@ import com.apollographql.apollo.ApolloQueryCall
 import com.rolandoasmat.aji.network.ApiSuccessResponse
 import com.rolandoasmat.aji.network.NetworkBoundResource
 import com.rolandoasmat.aji.network.Resource
-import com.rolandoasmat.aji.repositories.DatabaseRepository
 import com.rolandoasmat.aji.db.FavoriteRecipeEntity
 import com.rolandoasmat.aji.model.Ingredient
 import com.rolandoasmat.aji.model.Recipe
@@ -34,7 +33,7 @@ class RecipesRepository @Inject constructor(
 
             override fun processResponse(response: ApiSuccessResponse<ListRecipesQuery.Data>): List<Recipe> {
                 return response.body.listRecipes()?.items()?.map { item ->
-                    Recipe(item.id(), item.title(), item.thumbnailURL(), item.sectionTitle())
+                    Recipe(item.id(), item.title(), item.thumbnailURL())
                 } ?: emptyList()
             }
 
@@ -53,21 +52,20 @@ class RecipesRepository @Inject constructor(
                 val ingredients = mutableListOf<Ingredient>()
                 recipeDetails.ingredients()?.forEach {
                     it?.let {
-                        val ingredient = Ingredient(it.name(), it.amount())
+                        val ingredient = Ingredient(it.name(), it.amount() ?: "") // TODO remove once schema updated
                         ingredients.add(ingredient)
                     }
                 }
-                val steps = recipeDetails.steps().map { Step(it, null) }
+                val steps = recipeDetails.steps().map { Step(it) }
                 return RecipeDetails(
                     recipeDetails.id(),
                     recipeDetails.title() ?: "",
-                    recipeDetails.imageURL(),
+                    recipeDetails.imageURL() ?: "", // TODO remove once schema updated
                     recipeDetails.description() ?: "",
-                    recipeDetails.duration(),
-                    recipeDetails.servings(),
+                    recipeDetails.duration() ?: "", // TODO remove once schema updated
+                    recipeDetails.servings() ?: "", // TODO remove once schema updated
                     ingredients,
-                    steps,
-                null)
+                    steps)
             }
         }.asLiveData()
     }

@@ -82,7 +82,7 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
     }
 
     private fun map(data: RecipeDetails): RecipeDetailsUIModel {
-        val ingredients = data.ingredients.map { IngredientUIModel(it.name, it.quantity) }
+        val ingredients = data.ingredients.map { IngredientUIModel(it.name, it.amount) }
         return RecipeDetailsUIModel(
             data.id,
             data.title,
