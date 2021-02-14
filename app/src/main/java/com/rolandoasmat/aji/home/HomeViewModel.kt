@@ -6,7 +6,7 @@ import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.network.Status
 import com.rolandoasmat.aji.model.Recipe
 
-class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
+class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
     private val _fetchRecipes = MutableLiveData<Unit>()
     private val _recipesSource: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(_fetchRecipes) {

@@ -24,7 +24,7 @@ class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private val viewModel: RecipesViewModel by viewModels { viewModelFactory }
+    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
