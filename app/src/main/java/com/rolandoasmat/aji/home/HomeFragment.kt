@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_recipes.*
 import kotlinx.android.synthetic.main.fragment_recipes.loadingBar
 import javax.inject.Inject
 
-class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
+class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -74,7 +74,7 @@ class RecipesFragment : Fragment(), RecipesRecyclerView.Callbacks {
     }
 
     override fun onImageTapped(recipeID: String) {
-        val action = RecipesFragmentDirections.actionRecipeToRecipeDetails(recipeID)
+        val action = HomeFragmentDirections.actionRecipeToRecipeDetails(recipeID)
         findNavController().navigate(action)
     }
 
