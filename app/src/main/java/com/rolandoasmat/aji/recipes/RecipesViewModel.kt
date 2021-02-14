@@ -51,23 +51,13 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
-                    _recipes.value = map(data)
+                    _recipes.value = RecipesUIModel.from(data)
                 }
             }
             Status.ERROR -> {
                 _error.value = response.message
             }
         }
-    }
-
-    private fun map(recipes: List<Recipe>): RecipesUIModel {
-        val sections = mutableListOf<RecipesUIModel.Section>()
-        val items = recipes.map {
-            RecipesUIModel.Entry(it.id, it.title, it.thumbnailURL)
-        }
-        val section = RecipesUIModel.Section.Grid("Items", items)
-        sections.add(section)
-        return RecipesUIModel(sections)
     }
     //endregion
 

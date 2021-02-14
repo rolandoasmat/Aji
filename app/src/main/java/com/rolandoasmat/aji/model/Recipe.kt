@@ -3,4 +3,5 @@ package com.rolandoasmat.aji.model
 data class Recipe(
     val id: String,
     val title: String,
-    val thumbnailURL: String?)
+    val thumbnailURL: String?,
+    val category: Category)

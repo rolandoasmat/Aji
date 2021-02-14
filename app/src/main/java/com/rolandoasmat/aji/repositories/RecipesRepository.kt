@@ -13,6 +13,7 @@ import com.rolandoasmat.aji.model.Ingredient
 import com.rolandoasmat.aji.model.Recipe
 import com.rolandoasmat.aji.model.RecipeDetails
 import com.rolandoasmat.aji.model.Step
+import com.rolandoasmat.aji.model.mappers.RecipeMapper
 import com.rolandoasmat.aji.network.AjiApolloClient
 import java.lang.IllegalStateException
 import javax.inject.Inject
@@ -33,7 +34,7 @@ class RecipesRepository @Inject constructor(
 
             override fun processResponse(response: ApiSuccessResponse<ListRecipesQuery.Data>): List<Recipe> {
                 return response.body.listRecipes()?.items()?.map { item ->
-                    Recipe(item.id(), item.title(), item.thumbnailURL())
+                    RecipeMapper.recipeFromGQLRecipe(item)
                 } ?: emptyList()
             }
 
