@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/recipes"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/recipes" />
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/home" />
 
     <item
         android:id="@+id/saved"
