@@ -8,7 +8,6 @@ import com.rolandoasmat.aji.model.Recipe
 
 class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
-    // Breakfast
     private val _fetchRecipes = MutableLiveData<Unit>()
     private val _recipesSource: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(_fetchRecipes) {
         recipesRepository.fetchRecipes()
@@ -29,8 +28,6 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     val error: LiveData<String?>
         get() = _error
 
-    //region Public
-
     fun fetch() {
         _fetchRecipes.value = Unit
     }
@@ -43,9 +40,6 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         _error.value = null
     }
 
-    //endregion
-
-    //region Private
     private fun handleRecipesResponse(response: Resource<List<Recipe>>) {
         _loading.value = response.status == Status.LOADING
         when(response.status) {
@@ -59,6 +53,5 @@ class RecipesViewModel(recipesRepository: RecipesRepository) : ViewModel() {
             }
         }
     }
-    //endregion
 
 }
