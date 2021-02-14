@@ -4,7 +4,7 @@ import com.rolandoasmat.aji.info.InfoFragment
 import com.rolandoasmat.aji.ingredients.IngredientsFragment
 import com.rolandoasmat.aji.recipe_details.RecipeDetailsActivity
 import com.rolandoasmat.aji.recipe_details.RecipeDetailsFragment
-import com.rolandoasmat.aji.recipes.RecipesFragment
+import com.rolandoasmat.aji.home.RecipesFragment
 import com.rolandoasmat.aji.saved.SavedFragment
 import com.rolandoasmat.aji.steps.StepsFragment
 import dagger.Component

@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.R
-import com.rolandoasmat.aji.recipes.RecipeSectionView
-import com.rolandoasmat.aji.recipes.RecipesUIModel
+import com.rolandoasmat.aji.home.RecipeSectionView
+import com.rolandoasmat.aji.home.RecipesUIModel
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.item_recipe.view.*
 

@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.recipes
+package com.rolandoasmat.aji.home
 
 import com.rolandoasmat.aji.model.Recipe
 

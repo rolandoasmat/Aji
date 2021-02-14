@@ -13,7 +13,7 @@ import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.extensions.gone
 import com.rolandoasmat.aji.extensions.visible
-import com.rolandoasmat.aji.recipes.RecipeSectionView
+import com.rolandoasmat.aji.home.RecipeSectionView
 import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
 import javax.inject.Inject

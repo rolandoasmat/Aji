@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.recipes
+package com.rolandoasmat.aji.home
 
 import android.content.Context
 import androidx.constraintlayout.widget.ConstraintLayout

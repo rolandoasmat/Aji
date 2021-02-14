@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rolandoasmat.aji.recipes.RecipeSectionView
-import com.rolandoasmat.aji.recipes.RecipesUIModel
+import com.rolandoasmat.aji.home.RecipeSectionView
+import com.rolandoasmat.aji.home.RecipesUIModel
 
 class RecipesRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
 
