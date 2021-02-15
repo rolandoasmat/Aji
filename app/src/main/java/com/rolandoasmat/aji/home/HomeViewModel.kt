@@ -5,6 +5,7 @@ import com.rolandoasmat.aji.repositories.RecipesRepository
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.network.Status
 import com.rolandoasmat.aji.model.Recipe
+import com.rolandoasmat.aji.ui.RecipesGridViewUiModel
 
 class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
@@ -12,13 +13,13 @@ class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     private val _recipesSource: LiveData<Resource<List<Recipe>>> = Transformations.switchMap(_fetchRecipes) {
         recipesRepository.fetchRecipes()
     }
-    private val _recipes = MediatorLiveData<RecipesUIModel>().apply {
+    private val _uiModel = MediatorLiveData<HomeUIModel>().apply {
         addSource(_recipesSource) {
             handleRecipesResponse(it)
         }
     }
-    val recipes: LiveData<RecipesUIModel>
-        get() = _recipes
+    val uiModel: LiveData<HomeUIModel>
+        get() = _uiModel
 
     private val _loading = MutableLiveData(false)
     val loading: LiveData<Boolean>
@@ -45,7 +46,8 @@ class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         when(response.status) {
             Status.SUCCESS -> {
                 response.data?.let { data ->
-                    _recipes.value = RecipesUIModel.from(data)
+                    val  grid = RecipesGridViewUiModel.from(data)
+                    _uiModel.value = HomeUIModel(grid)
                 }
             }
             Status.ERROR -> {

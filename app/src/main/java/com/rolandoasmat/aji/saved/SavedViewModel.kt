@@ -4,16 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.rolandoasmat.aji.repositories.RecipesRepository
-import com.rolandoasmat.aji.home.RecipesUIModel
 
 class SavedViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
-    private val _saved = Transformations.map(recipesRepository.loadFavoriteRecipes()) {
-        it.map { entry ->
-            RecipesUIModel.Entry(entry.recipeID, entry.name, entry.posterURL)
-        }
+    private val _uiModel = Transformations.map(recipesRepository.loadFavoriteRecipes()) {
+        SavedUiModel.fromRecipes(it)
     }
-    val saved: LiveData<List<RecipesUIModel.Entry>>
-        get() = _saved
+
+    val uiModel: LiveData<SavedUiModel>
+        get() = _uiModel
 
 }

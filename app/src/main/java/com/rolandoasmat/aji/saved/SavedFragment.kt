@@ -13,8 +13,8 @@ import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.extensions.gone
 import com.rolandoasmat.aji.extensions.visible
-import com.rolandoasmat.aji.home.RecipeSectionView
-import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
+import com.rolandoasmat.aji.ui.RecipeSectionView
+import com.rolandoasmat.aji.ui.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
 import javax.inject.Inject
 
@@ -40,9 +40,9 @@ class SavedFragment : Fragment(), RecipesRecyclerView.Callbacks {
     }
 
     private fun observeViewModel() {
-        viewModel.saved.observe(viewLifecycleOwner, Observer {
-            recipesRecyclerView?.setData(it, RecipeSectionView.SectionType.VERTICAL_COLUMN)
-            if (it.isNullOrEmpty()){
+        viewModel.uiModel.observe(viewLifecycleOwner, Observer {
+            recipesRecyclerView?.setData(it.recipes , RecipeSectionView.SectionType.VERTICAL_COLUMN)
+            if (it.recipes.isNullOrEmpty()){
                 emptyStateLabel?.visible()
             } else {
                 emptyStateLabel?.gone()

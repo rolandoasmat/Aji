@@ -13,11 +13,10 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/sectionsLinearLayout"
+            <com.rolandoasmat.aji.ui.RecipesGridView
+                android:id="@+id/recipesGridView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" />
+                android:layout_height="wrap_content" />
         </androidx.core.widget.NestedScrollView>
 
         <ProgressBar

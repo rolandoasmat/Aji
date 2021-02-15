@@ -1,12 +1,10 @@
-package com.rolandoasmat.aji.recipes_recyclerview
+package com.rolandoasmat.aji.ui
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rolandoasmat.aji.home.RecipeSectionView
-import com.rolandoasmat.aji.home.RecipesUIModel
 
 class RecipesRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
 
@@ -18,7 +16,7 @@ class RecipesRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(
     }
 
     //region Public
-    fun setData(data: List<RecipesUIModel.Entry>, sectionType: RecipeSectionView.SectionType) {
+    fun setData(data: List<RecipeSectionViewUiModel.Entry>, sectionType: RecipeSectionView.SectionType) {
         updateSectionType(sectionType)
         recipesAdapter.setData(data, sectionType)
     }

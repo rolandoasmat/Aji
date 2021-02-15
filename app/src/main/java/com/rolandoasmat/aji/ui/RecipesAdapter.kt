@@ -1,4 +1,4 @@
-package com.rolandoasmat.aji.recipes_recyclerview
+package com.rolandoasmat.aji.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,18 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rolandoasmat.aji.R
-import com.rolandoasmat.aji.home.RecipeSectionView
-import com.rolandoasmat.aji.home.RecipesUIModel
 import com.rolandoasmat.aji.services.ImageLoader
 import kotlinx.android.synthetic.main.item_recipe.view.*
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
 
     private var callbacks: RecipesRecyclerView.Callbacks? = null
-    private var data: List<RecipesUIModel.Entry>? = null
+    private var data: List<RecipeSectionViewUiModel.Entry>? = null
     private var sectionType: RecipeSectionView.SectionType? = null
 
-    fun setData(data: List<RecipesUIModel.Entry>, sectionType: RecipeSectionView.SectionType) {
+    fun setData(data: List<RecipeSectionViewUiModel.Entry>, sectionType: RecipeSectionView.SectionType) {
         this.sectionType = sectionType
         this.data = data
         notifyDataSetChanged()
@@ -80,7 +78,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
             }
         }
 
-        fun bind(data: RecipesUIModel.Entry) {
+        fun bind(data: RecipeSectionViewUiModel.Entry) {
             imageBackdrop?.let { imageView ->
                 data.thumbnailURL?.let { backdropURL ->
                     ImageLoader.load(backdropURL, imageView)

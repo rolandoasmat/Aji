@@ -15,7 +15,7 @@ import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.extensions.gone
 import com.rolandoasmat.aji.extensions.visible
-import com.rolandoasmat.aji.recipes_recyclerview.RecipesRecyclerView
+import com.rolandoasmat.aji.ui.RecipesRecyclerView
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import kotlinx.android.synthetic.main.fragment_recipes.loadingBar
 import javax.inject.Inject
@@ -46,13 +46,9 @@ class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
     }
 
     private fun observeViewModel() {
-        viewModel.recipes.observe(viewLifecycleOwner, Observer {
+        viewModel.uiModel.observe(viewLifecycleOwner, Observer {
             it?.let {
-                sectionsLinearLayout?.removeAllViews()
-                it.sections.forEach { section ->
-                    val sectionView = RecipeSectionView(requireContext(), section, this)
-                    sectionsLinearLayout?.addView(sectionView)
-                }
+                recipesGridView?.setUiModel(it.grid)
             }
         })
         viewModel.loading.observe(viewLifecycleOwner) {
