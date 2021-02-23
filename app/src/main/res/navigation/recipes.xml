@@ -10,7 +10,7 @@
         android:id="@+id/fragment_recipes"
         android:name="com.rolandoasmat.aji.home.HomeFragment"
         android:label="@string/title_recipes_screen"
-        tools:layout="@layout/fragment_recipes" >
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_recipe_to_recipeDetails"
             app:destination="@id/activity_recipe_details" />

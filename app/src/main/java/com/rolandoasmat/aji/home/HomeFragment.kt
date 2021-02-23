@@ -16,8 +16,7 @@ import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.extensions.gone
 import com.rolandoasmat.aji.extensions.visible
 import com.rolandoasmat.aji.ui.RecipesRecyclerView
-import kotlinx.android.synthetic.main.fragment_recipes.*
-import kotlinx.android.synthetic.main.fragment_recipes.loadingBar
+import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
@@ -32,7 +31,7 @@ class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_recipes, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
