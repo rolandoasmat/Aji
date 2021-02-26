@@ -15,11 +15,11 @@ import com.rolandoasmat.aji.R
 import com.rolandoasmat.aji.di.ViewModelFactory
 import com.rolandoasmat.aji.extensions.gone
 import com.rolandoasmat.aji.extensions.visible
-import com.rolandoasmat.aji.ui.RecipesRecyclerView
+import com.rolandoasmat.aji.ui.RecipesGridView
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
-class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
+class HomeFragment : Fragment(), RecipesGridView.Callback {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -42,6 +42,7 @@ class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
             viewModel.refresh()
             pullToRefresh?.isRefreshing = false
         }
+        recipesGridView?.setCallback(this)
     }
 
     private fun observeViewModel() {
@@ -68,7 +69,7 @@ class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
         }
     }
 
-    override fun onImageTapped(recipeID: String) {
+    override fun onRecipeClick(recipeID: String) {
         val action = HomeFragmentDirections.actionRecipeToRecipeDetails(recipeID)
         findNavController().navigate(action)
     }
