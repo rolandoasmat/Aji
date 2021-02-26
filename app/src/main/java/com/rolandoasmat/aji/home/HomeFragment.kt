@@ -47,7 +47,7 @@ class HomeFragment : Fragment(), RecipesRecyclerView.Callbacks {
     private fun observeViewModel() {
         viewModel.uiModel.observe(viewLifecycleOwner, Observer {
             it?.let {
-                recipesGridView?.setUiModel(it.grid)
+                recipesGridView?.setUiModel(it.gridUiModel)
             }
         })
         viewModel.loading.observe(viewLifecycleOwner) {

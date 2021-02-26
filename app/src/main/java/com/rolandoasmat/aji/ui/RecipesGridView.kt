@@ -7,6 +7,7 @@ import androidx.core.view.forEach
 
 class RecipesGridView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs), RecipesRecyclerView.Callbacks {
 
+    private var callback: Callback? = null
 
     init {
         orientation = VERTICAL
@@ -17,12 +18,19 @@ class RecipesGridView(context: Context, attrs: AttributeSet) : LinearLayout(cont
         uiModel.sections.forEach { section ->
             val sectionView = RecipeSectionView(context, section, this)
             addView(sectionView)
-
         }
     }
 
+    fun setCallback( callback: Callback) {
+        this.callback = callback
+    }
+
     override fun onImageTapped(recipeID: String) {
-        // TODO
+        callback?.onRecipeClick(recipeID)
+    }
+
+    interface Callback {
+        fun onRecipeClick(recipeID: String)
     }
 
 }
