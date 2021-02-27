@@ -15,6 +15,12 @@ import com.rolandoasmat.aji.recipe_details.RecipeDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_info.*
 import javax.inject.Inject
 
+/**
+ * Shows Recipe info, such as:
+ * - Description
+ * - # of servings
+ * - Cook time
+ */
 class InfoFragment: Fragment() {
 
     @Inject
