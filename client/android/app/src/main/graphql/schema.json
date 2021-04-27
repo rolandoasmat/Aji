@@ -13,21 +13,11 @@
                     "description": null,
                     "fields": [
                         {
-                            "name": "listRecipes",
+                            "name": "getRecipes",
                             "description": null,
                             "args": [
                                 {
-                                    "name": "limit",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "SCALAR",
-                                        "name": "Int",
-                                        "ofType": null
-                                    },
-                                    "defaultValue": null
-                                },
-                                {
-                                    "name": "nextToken",
+                                    "name": "cursor",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -39,7 +29,7 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "RecipeConnection",
+                                "name": "Recipes",
                                 "ofType": null
                             },
                             "isDeprecated": false,
@@ -80,7 +70,7 @@
                 },
                 {
                     "kind": "OBJECT",
-                    "name": "RecipeConnection",
+                    "name": "Recipes",
                     "description": null,
                     "fields": [
                         {
@@ -94,9 +84,13 @@
                                     "kind": "LIST",
                                     "name": null,
                                     "ofType": {
-                                        "kind": "OBJECT",
-                                        "name": "Recipe",
-                                        "ofType": null
+                                        "kind": "NON_NULL",
+                                        "name": null,
+                                        "ofType": {
+                                            "kind": "OBJECT",
+                                            "name": "RecipeGroup",
+                                            "ofType": null
+                                        }
                                     }
                                 }
                             },
@@ -118,6 +112,67 @@
                     ],
                     "inputFields": null,
                     "interfaces": [],
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "OBJECT",
+                    "name": "RecipeGroup",
+                    "description": null,
+                    "fields": [
+                        {
+                            "name": "name",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "recipes",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "LIST",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "NON_NULL",
+                                        "name": null,
+                                        "ofType": {
+                                            "kind": "OBJECT",
+                                            "name": "Recipe",
+                                            "ofType": null
+                                        }
+                                    }
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        }
+                    ],
+                    "inputFields": null,
+                    "interfaces": [],
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "description": "Built-in String",
+                    "fields": null,
+                    "inputFields": null,
+                    "interfaces": null,
                     "enumValues": null,
                     "possibleTypes": null
                 },
@@ -169,46 +224,6 @@
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
-                        },
-                        {
-                            "name": "sectionTitle",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        },
-                        {
-                            "name": "someUnionType",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "UNION",
-                                "name": "SomeUnionType",
-                                "ofType": null
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        },
-                        {
-                            "name": "skill",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "OBJECT",
-                                "name": "Skillet",
-                                "ofType": null
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
                         }
                     ],
                     "inputFields": null,
@@ -225,135 +240,6 @@
                     "interfaces": null,
                     "enumValues": null,
                     "possibleTypes": null
-                },
-                {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "description": "Built-in String",
-                    "fields": null,
-                    "inputFields": null,
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
-                    "kind": "UNION",
-                    "name": "SomeUnionType",
-                    "description": null,
-                    "fields": null,
-                    "inputFields": null,
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": [
-                        {
-                            "kind": "OBJECT",
-                            "name": "Skillet",
-                            "ofType": null
-                        },
-                        {
-                            "kind": "OBJECT",
-                            "name": "RecipeDetails",
-                            "ofType": null
-                        }
-                    ]
-                },
-                {
-                    "kind": "OBJECT",
-                    "name": "Skillet",
-                    "description": null,
-                    "fields": [
-                        {
-                            "name": "id",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        },
-                        {
-                            "name": "name",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        }
-                    ],
-                    "inputFields": null,
-                    "interfaces": [
-                        {
-                            "kind": "INTERFACE",
-                            "name": "Cookware",
-                            "ofType": null
-                        }
-                    ],
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
-                    "kind": "INTERFACE",
-                    "name": "Cookware",
-                    "description": null,
-                    "fields": [
-                        {
-                            "name": "id",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        },
-                        {
-                            "name": "name",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        }
-                    ],
-                    "inputFields": null,
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": [
-                        {
-                            "kind": "OBJECT",
-                            "name": "Skillet",
-                            "ofType": null
-                        }
-                    ]
                 },
                 {
                     "kind": "OBJECT",
@@ -381,9 +267,13 @@
                             "description": null,
                             "args": [],
                             "type": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
@@ -401,37 +291,17 @@
                             "deprecationReason": null
                         },
                         {
-                            "name": "description",
+                            "name": "info",
                             "description": null,
                             "args": [],
                             "type": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        },
-                        {
-                            "name": "duration",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        },
-                        {
-                            "name": "servings",
-                            "description": null,
-                            "args": [],
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "OBJECT",
+                                    "name": "RecipeInfo",
+                                    "ofType": null
+                                }
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
@@ -441,12 +311,20 @@
                             "description": null,
                             "args": [],
                             "type": {
-                                "kind": "LIST",
+                                "kind": "NON_NULL",
                                 "name": null,
                                 "ofType": {
-                                    "kind": "OBJECT",
-                                    "name": "Ingredient",
-                                    "ofType": null
+                                    "kind": "LIST",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "NON_NULL",
+                                        "name": null,
+                                        "ofType": {
+                                            "kind": "OBJECT",
+                                            "name": "Ingredient",
+                                            "ofType": null
+                                        }
+                                    }
                                 }
                             },
                             "isDeprecated": false,
@@ -484,6 +362,65 @@
                 },
                 {
                     "kind": "OBJECT",
+                    "name": "RecipeInfo",
+                    "description": null,
+                    "fields": [
+                        {
+                            "name": "description",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "duration",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "servings",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        }
+                    ],
+                    "inputFields": null,
+                    "interfaces": [],
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "OBJECT",
                     "name": "Ingredient",
                     "description": null,
                     "fields": [
@@ -508,9 +445,13 @@
                             "description": null,
                             "args": [],
                             "type": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
@@ -518,16 +459,6 @@
                     ],
                     "inputFields": null,
                     "interfaces": [],
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "description": "Built-in Int",
-                    "fields": null,
-                    "inputFields": null,
-                    "interfaces": null,
                     "enumValues": null,
                     "possibleTypes": null
                 },
@@ -1423,6 +1354,32 @@
                     "onField": true
                 },
                 {
+                    "name": "aws_subscribe",
+                    "description": "Tells the service which mutation triggers this subscription.",
+                    "locations": [
+                        "FIELD_DEFINITION"
+                    ],
+                    "args": [
+                        {
+                            "name": "mutations",
+                            "description": "List of mutations which will trigger this subscription when they are called.",
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
                     "name": "aws_auth",
                     "description": "Directs the schema to enforce authorization on a field",
                     "locations": [
@@ -1487,6 +1444,30 @@
                     "onField": false
                 },
                 {
+                    "name": "aws_lambda",
+                    "description": "Tells the service this field/object has access authorized by a Lambda Authorizer.",
+                    "locations": [
+                        "OBJECT",
+                        "FIELD_DEFINITION"
+                    ],
+                    "args": [],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
+                    "name": "aws_iam",
+                    "description": "Tells the service this field/object has access authorized by sigv4 signing.",
+                    "locations": [
+                        "OBJECT",
+                        "FIELD_DEFINITION"
+                    ],
+                    "args": [],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
                     "name": "deprecated",
                     "description": null,
                     "locations": [
@@ -1522,44 +1503,6 @@
                     "onField": false
                 },
                 {
-                    "name": "aws_iam",
-                    "description": "Tells the service this field/object has access authorized by sigv4 signing.",
-                    "locations": [
-                        "OBJECT",
-                        "FIELD_DEFINITION"
-                    ],
-                    "args": [],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
-                    "name": "aws_subscribe",
-                    "description": "Tells the service which mutation triggers this subscription.",
-                    "locations": [
-                        "FIELD_DEFINITION"
-                    ],
-                    "args": [
-                        {
-                            "name": "mutations",
-                            "description": "List of mutations which will trigger this subscription when they are called.",
-                            "type": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        }
-                    ],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
                     "name": "aws_cognito_user_pools",
                     "description": "Tells the service this field/object has access authorized by a Cognito User Pools token.",
                     "locations": [
@@ -1582,18 +1525,6 @@
                             "defaultValue": null
                         }
                     ],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
-                    "name": "aws_lambda",
-                    "description": "Tells the service this field/object has access authorized by a Lambda Authorizer.",
-                    "locations": [
-                        "OBJECT",
-                        "FIELD_DEFINITION"
-                    ],
-                    "args": [],
                     "onOperation": false,
                     "onFragment": false,
                     "onField": false

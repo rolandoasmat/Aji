@@ -1,0 +1,40 @@
+fragment RecipesFragment on Recipes {
+    items {
+        ...RecipeGroupFragment
+    }
+    nextToken
+}
+
+fragment RecipeGroupFragment on RecipeGroup {
+    name
+    recipes {
+        ...RecipeFragment
+    }
+}
+
+fragment RecipeFragment on Recipe {
+    id
+    thumbnailURL
+    title
+}
+
+fragment RecipeDetailsFragment on RecipeDetails {
+    id
+    imageURL
+    ingredients {
+        ...IngredientFragment
+    }
+    steps
+    title
+}
+
+fragment RecipeInfoFragment on RecipeInfo {
+    description
+    duration
+    servings
+}
+
+fragment IngredientFragment on Ingredient {
+    amount
+    name
+}

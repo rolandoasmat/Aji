@@ -1,26 +1,11 @@
 query listRecipes {
-  listRecipes {
-    items {
-      id
-      title
-      sectionTitle
-      thumbnailURL
-    }
+  getRecipes {
+    ...RecipesFragment
   }
 }
 
 query getRecipeDetails($id: String!) {
   getRecipeDetails(id: $id) {
-    id
-    title
-    description
-    duration
-    servings
-    imageURL
-    ingredients {
-      name
-      amount
-    }
-    steps
+    ...RecipeDetailsFragment
   }
 }
