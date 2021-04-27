@@ -21,6 +21,9 @@ fragment RecipeFragment on Recipe {
 fragment RecipeDetailsFragment on RecipeDetails {
     id
     imageURL
+    info {
+        ...RecipeInfoFragment
+    }
     ingredients {
         ...IngredientFragment
     }

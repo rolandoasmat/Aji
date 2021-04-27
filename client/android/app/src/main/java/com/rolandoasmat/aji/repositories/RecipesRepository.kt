@@ -9,11 +9,7 @@ import com.rolandoasmat.aji.network.ApiSuccessResponse
 import com.rolandoasmat.aji.network.NetworkBoundResource
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.db.FavoriteRecipeEntity
-import com.rolandoasmat.aji.model.Ingredient
-import com.rolandoasmat.aji.model.Recipe
-import com.rolandoasmat.aji.model.RecipeDetails
-import com.rolandoasmat.aji.model.Step
-import com.rolandoasmat.aji.model.mappers.RecipeMapper
+import com.rolandoasmat.aji.model.*
 import com.rolandoasmat.aji.network.AjiApolloClient
 import java.lang.IllegalStateException
 import javax.inject.Inject
@@ -33,8 +29,10 @@ class RecipesRepository @Inject constructor(
             }
 
             override fun processResponse(response: ApiSuccessResponse<ListRecipesQuery.Data>): List<Recipe> {
-                return response.body.listRecipes()?.items()?.map { item ->
-                    RecipeMapper.recipeFromGQLRecipe(item)
+                return response.body.getRecipes?.fragments?.recipesFragment?.items?.map { item ->
+                    item.fragments.recipeGroupFragment.recipes.map { recipe ->
+                        recipe.fragments.recipeFragment.toRecipe()
+                    }
                 } ?: emptyList()
             }
 
