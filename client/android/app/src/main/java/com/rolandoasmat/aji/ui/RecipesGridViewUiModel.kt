@@ -12,7 +12,7 @@ data class RecipesGridViewUiModel(val sections: List<RecipeSectionViewUiModel>) 
 
     companion object {
 
-        fun from(homeScreenData: HomeScreenData, sort: Sort = Sort.BY_TITLE ): RecipesGridViewUiModel {
+        fun from(homeScreenData: HomeScreenData, sort: Sort = Sort.BY_CATEGORIES ): RecipesGridViewUiModel {
             val sections = when(sort) {
                 Sort.BY_CATEGORIES -> sortByCategory(homeScreenData)
                 Sort.BY_TITLE -> sortByTitle(homeScreenData)
