@@ -1,9 +1,6 @@
 package com.rolandoasmat.aji.network
 
-import com.rolandoasmat.aji.model.HomeScreenData
-import com.rolandoasmat.aji.model.Recipe
-import com.rolandoasmat.aji.model.RecipeDetails
-import com.rolandoasmat.aji.model.RecipeGroup
+import com.rolandoasmat.aji.model.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -23,6 +20,25 @@ class AjiNetworkServiceFakeData: AjiNetworkService {
     }
 
     override fun getRecipeDetails(id: String): Flow<Resource<RecipeDetails>> {
-        return flow { }
+        val info = RecipeInfo(
+            description = "A delicious beed stir fry served with rice and fries.",
+            duration = "45 min",
+            servings = "5 servings"
+        )
+        val ingredients = listOf(
+            Ingredient(amount = "1 lb", name = "beef tenderloin")
+        )
+        val steps = listOf(
+            Step(description = "cut everything"),
+            Step(description = "make the rice"),
+            Step(description = "cook the beef"))
+        val data = RecipeDetails(id = id,
+            imageURL = null,
+            info = info,
+            ingredients = ingredients,
+            steps = steps,
+            title = "Lomo Saltado"
+        )
+        return flow { emit(Resource.success(data))}
     }
 }
