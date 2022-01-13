@@ -6,6 +6,7 @@ import com.rolandoasmat.aji.repositories.RecipesRepository
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.network.Status
 import com.rolandoasmat.aji.model.Recipes
+import com.rolandoasmat.aji.ui.RecipesGridViewUiModel
 
 class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
@@ -44,9 +45,8 @@ class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     private fun handleRecipesResponse(response: Resource<HomeScreenData>) {
         _loading.value = response.status == Status.LOADING
         response.data?.let { recipes ->
-//            TODO create updated UI model
-//            val  grid = RecipesGridViewUiModel.from(recipes.items)
-//            _uiModel.value = HomeUIModel(grid)
+            val  grid = RecipesGridViewUiModel.from(recipes.recipeGroups.first().recipes)
+            _uiModel.value = HomeUIModel(grid)
         }
         response.message?.let { errorMessage ->
             _error.value = errorMessage
