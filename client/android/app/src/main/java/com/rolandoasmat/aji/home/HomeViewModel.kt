@@ -44,8 +44,8 @@ class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
     private fun handleRecipesResponse(response: Resource<HomeScreenData>) {
         _loading.value = response.status == Status.LOADING
-        response.data?.let { recipes ->
-            val  grid = RecipesGridViewUiModel.from(recipes.recipeGroups.first().recipes)
+        response.data?.let { homeScreenData ->
+            val  grid = RecipesGridViewUiModel.from(homeScreenData)
             _uiModel.value = HomeUIModel(grid)
         }
         response.message?.let { errorMessage ->

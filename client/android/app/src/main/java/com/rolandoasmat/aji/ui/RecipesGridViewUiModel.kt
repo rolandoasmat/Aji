@@ -1,5 +1,6 @@
 package com.rolandoasmat.aji.ui
 
+import com.rolandoasmat.aji.model.HomeScreenData
 import com.rolandoasmat.aji.model.Recipe
 
 data class RecipesGridViewUiModel(val sections: List<RecipeSectionViewUiModel>) {
@@ -11,10 +12,10 @@ data class RecipesGridViewUiModel(val sections: List<RecipeSectionViewUiModel>) 
 
     companion object {
 
-        fun from(recipes: List<Recipe>, sort: Sort = Sort.BY_TITLE ): RecipesGridViewUiModel {
+        fun from(homeScreenData: HomeScreenData, sort: Sort = Sort.BY_TITLE ): RecipesGridViewUiModel {
             val sections = when(sort) {
-                Sort.BY_CATEGORIES -> sortByCategory(recipes)
-                Sort.BY_TITLE -> sortByTitle(recipes)
+                Sort.BY_CATEGORIES -> sortByCategory(homeScreenData)
+                Sort.BY_TITLE -> sortByTitle(homeScreenData)
             }
             return RecipesGridViewUiModel(sections)
         }
@@ -27,24 +28,28 @@ data class RecipesGridViewUiModel(val sections: List<RecipeSectionViewUiModel>) 
          * - Dessert
          * - Drinks
          */
-        private fun sortByCategory(recipes: List<Recipe>): List<RecipeSectionViewUiModel> {
-            val sections = mutableListOf<RecipeSectionViewUiModel>()
-            val items = recipes.map {
-                RecipeSectionViewUiModel.Entry.from(it)
+        private fun sortByCategory(homeScreenData: HomeScreenData): List<RecipeSectionViewUiModel> {
+            return homeScreenData.recipeGroups.map { group ->
+                val items = group.recipes.map { recipe ->
+                    RecipeSectionViewUiModel.Entry.from(recipe)
+                }
+                RecipeSectionViewUiModel.Grid(group.name, items)
             }
-            val section = RecipeSectionViewUiModel.Grid("Items", items)
-            sections.add(section)
-            return sections
         }
 
-        private fun sortByTitle(recipes: List<Recipe>): List<RecipeSectionViewUiModel> {
+        private fun sortByTitle(homeScreenData: HomeScreenData): List<RecipeSectionViewUiModel> {
+            val recipes = mutableListOf<Recipe>()
+            homeScreenData.recipeGroups.forEach { group ->
+                recipes.addAll(group.recipes)
+            }
+
             val entries = recipes
                 .sortedBy {
                     it.title
                 }.map {
                     RecipeSectionViewUiModel.Entry.from(it)
                 }
-            val section = RecipeSectionViewUiModel.Grid("Recipes", entries)
+            val section = RecipeSectionViewUiModel.Grid("Recipes - Alphabetical", entries)
             return listOf(section)
         }
     }
