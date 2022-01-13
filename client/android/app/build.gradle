@@ -85,4 +85,8 @@ dependencies {
     implementation("com.apollographql.apollo:apollo-runtime:2.2.3")
     // Coroutines extensions for easier asynchronicity handling
     implementation("com.apollographql.apollo:apollo-coroutines-support:2.2.3")
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
+
 }

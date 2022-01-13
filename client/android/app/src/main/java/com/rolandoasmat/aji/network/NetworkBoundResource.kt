@@ -15,15 +15,10 @@ package com.rolandoasmat.aji.network
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.apollographql.apollo.ApolloQueryCall
-import com.apollographql.apollo.coroutines.toDeferred
 import com.apollographql.apollo.exception.ApolloException
 import com.rolandoasmat.aji.repositories.CoroutineContextProvider
 import kotlinx.coroutines.CoroutineScope
@@ -37,9 +32,9 @@ import kotlinx.coroutines.withContext
  * You can read more about it in the [Architecture
  * Guide](https://developer.android.com/arch).
  * @param <ResultType>
- * @param <RequestType>
-</RequestType></ResultType> */
-abstract class NetworkBoundResource<ResultType, RequestType>
+ * @param <ResponseType>
+</ResponseType></ResultType> */
+abstract class NetworkBoundResource<ResultType, ResponseType>
 @MainThread constructor(private val coroutineContextProvider: CoroutineContextProvider) {
 
     private val scope = CoroutineScope(coroutineContextProvider.main)
@@ -64,24 +59,20 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     private suspend fun fetchFromNetwork() {
         withContext(coroutineContextProvider.io) {
             try {
-                val response = createCall().toDeferred().await()
-                val data = response.data
-                if (data == null || response.hasErrors()) {
-                    // handle application errors
-                    val errorMessage = response.errors?.first()?.message
-                    onFetchFailed()
-                    withContext(coroutineContextProvider.main) {
-                        setValue(Resource.error(errorMessage?: "", null))
+                val response = createCall()
+                when (response) {
+                    is ApiSuccessResponse -> {
+                        val data = response.data
+                        val processed = processResponse(data)
+                        withContext(coroutineContextProvider.main) {
+                            setValue(Resource.success(processed))
+                        }
                     }
-                } else {
-                    val successResponse =
-                        ApiSuccessResponse<RequestType>(
-                            data,
-                            null
-                        )
-                    val processed = processResponse(successResponse)
-                    withContext(coroutineContextProvider.main) {
-                        setValue(Resource.success(processed))
+                    is ApiErrorResponse -> {
+                        onFetchFailed()
+                        withContext(coroutineContextProvider.main) {
+                            setValue(Resource.error(response.errorMessage, null))
+                        }
                     }
                 }
             } catch (e: ApolloException) {
@@ -100,8 +91,8 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     fun asLiveData() = result as LiveData<Resource<ResultType>>
 
     @WorkerThread
-    protected abstract fun processResponse(response: ApiSuccessResponse<RequestType>): ResultType
+    protected abstract fun processResponse(response: ResponseType): ResultType
 
     @MainThread
-    protected abstract fun createCall(): ApolloQueryCall<RequestType>
+    protected abstract suspend fun createCall(): ApiResponse<ResponseType>
 }

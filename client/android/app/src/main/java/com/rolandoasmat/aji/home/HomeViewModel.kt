@@ -4,15 +4,13 @@ import androidx.lifecycle.*
 import com.rolandoasmat.aji.repositories.RecipesRepository
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.network.Status
-import com.rolandoasmat.aji.model.Recipe
 import com.rolandoasmat.aji.model.Recipes
-import com.rolandoasmat.aji.ui.RecipesGridViewUiModel
 
 class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
     private val _fetchRecipes = MutableLiveData<Unit>()
     private val _recipesSource = Transformations.switchMap(_fetchRecipes) {
-        recipesRepository.fetchRecipes()
+        recipesRepository.fetchHomeScreenRecipes()
     }
     private val _uiModel = MediatorLiveData<HomeUIModel>().apply {
         addSource(_recipesSource) {
