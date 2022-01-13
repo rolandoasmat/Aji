@@ -1,6 +1,7 @@
 package com.rolandoasmat.aji.home
 
 import androidx.lifecycle.*
+import com.rolandoasmat.aji.model.HomeScreenData
 import com.rolandoasmat.aji.repositories.RecipesRepository
 import com.rolandoasmat.aji.network.Resource
 import com.rolandoasmat.aji.network.Status
@@ -40,7 +41,7 @@ class HomeViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         _error.value = null
     }
 
-    private fun handleRecipesResponse(response: Resource<Recipes>) {
+    private fun handleRecipesResponse(response: Resource<HomeScreenData>) {
         _loading.value = response.status == Status.LOADING
         response.data?.let { recipes ->
 //            TODO create updated UI model
