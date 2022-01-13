@@ -86,10 +86,10 @@ class RecipeDetailsViewModel(private val recipesRepository: RecipesRepository): 
         return RecipeDetailsUIModel(
             data.id,
             data.title,
-            data.posterURL,
-            data.description,
-            data.cookingTime ?: "--",
-            data.servingSize ?: "--",
+            "data.posterURL",
+            "data.description",
+            "data.cookingTime",
+            "data.servingSize ",
             ingredients,
             data.steps.map { StepListItemUIModel(it.description) })
     }
