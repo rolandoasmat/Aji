@@ -10,6 +10,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rolandoasmat.aji.AjiApplication
 import com.rolandoasmat.aji.R
@@ -45,10 +46,12 @@ class RecipeDetailsFragment: Fragment() {
         toolbar?.setNavigationOnClickListener {
             (activity as? AppCompatActivity)?.onSupportNavigateUp()
         }
-
         pullToRefresh?.setOnRefreshListener {
             viewModel.refresh()
             pullToRefresh?.isRefreshing = false
+        }
+        beginRecipeButton?.setOnClickListener {
+            navigateToRecipeBreakdown()
         }
     }
 
@@ -99,6 +102,11 @@ class RecipeDetailsFragment: Fragment() {
         fabIcon?.setOnClickListener {
             viewModel.fabClicked()
         }
+    }
+
+    private fun navigateToRecipeBreakdown() {
+        val action = RecipeDetailsFragmentDirections.recipeDetailsFragmentToRecipeBreakdownFragment("123")
+        findNavController().navigate(action)
     }
 
 }

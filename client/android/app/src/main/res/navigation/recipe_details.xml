@@ -13,5 +13,20 @@
         <argument
             android:name="recipeIDArg"
             app:argType="string" />
+        <action
+            android:id="@+id/recipeDetailsFragment_to_recipeBreakdownFragment"
+            app:destination="@+id/recipeBreakdownFragment" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/recipeBreakdownFragment"
+        android:name="com.rolandoasmat.aji.recipe_breakdown.RecipeBreakdownFragment"
+        android:label="RecipeBreakdownFragment"
+        tools:layout="@layout/fragment_recipe_details">
+        <argument
+            android:name="recipeIDArg"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

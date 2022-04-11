@@ -14,7 +14,7 @@ class AjiNetworkServiceFakeData: AjiNetworkService {
             Recipe(id = "686567", thumbnailURL = null, title = "Aji de Gallina"))
         val recipeGroups = listOf(
             RecipeGroup(name = "Breakfast", recipes = breakfastRecipes),
-            RecipeGroup(name = "Dinnder", recipes = dinnerRecipes))
+            RecipeGroup(name = "Dinner", recipes = dinnerRecipes))
         val data = HomeScreenData(recipeGroups = recipeGroups)
         return flow { emit(Resource.success(data)) }
     }
