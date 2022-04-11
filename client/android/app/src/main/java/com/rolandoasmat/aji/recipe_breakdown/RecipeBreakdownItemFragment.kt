@@ -23,5 +23,4 @@ class RecipeBreakdownItemFragment(
         super.onViewCreated(view, savedInstanceState)
         stepDescription?.text = data.stepDescription
     }
-
 }

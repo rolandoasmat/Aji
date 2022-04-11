@@ -16,8 +16,6 @@
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
-
-
     <style name="RecipeCategoryTitle">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline3</item>
         <item name="android:textColor">@color/primaryDarkColor</item>

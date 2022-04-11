@@ -108,5 +108,4 @@ class RecipeDetailsFragment: Fragment() {
         val action = RecipeDetailsFragmentDirections.recipeDetailsFragmentToRecipeBreakdownFragment("123")
         findNavController().navigate(action)
     }
-
 }
